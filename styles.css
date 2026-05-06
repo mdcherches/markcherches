@@ -1,8 +1,8 @@
 :root {
   color-scheme: dark;
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #030303;
-  color: #f6f2ea;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  background: #000;
+  color: #f4efe6;
 }
 
 * {
@@ -18,7 +18,7 @@ body {
 
 body {
   overflow: hidden;
-  background: #030303;
+  background: #000;
 }
 
 .stage {
@@ -28,116 +28,130 @@ body {
   place-items: center;
   isolation: isolate;
   background:
-    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.11), transparent 8rem),
-    radial-gradient(circle at 36% 39%, rgba(74, 222, 128, 0.18), transparent 16rem),
-    radial-gradient(circle at 64% 61%, rgba(56, 189, 248, 0.14), transparent 18rem),
-    #030303;
+    linear-gradient(115deg, transparent 0 41%, rgba(255, 255, 255, 0.045) 41.1% 41.25%, transparent 41.35%),
+    linear-gradient(245deg, transparent 0 43%, rgba(170, 230, 255, 0.06) 43.1% 43.22%, transparent 43.32%),
+    radial-gradient(ellipse at center, #101010 0%, #050505 42%, #000 75%);
 }
 
-.grid {
+.field {
   position: absolute;
-  inset: -20%;
-  z-index: -4;
+  inset: 0;
+  z-index: -5;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at center, black 0%, transparent 67%);
-  transform: perspective(700px) rotateX(62deg) translateY(18%);
-  transform-origin: center;
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 68%);
+  opacity: 0.32;
 }
 
-.signal {
+.field::before,
+.field::after {
+  position: absolute;
+  content: "";
+  inset: 17% 12%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  clip-path: polygon(0 0, 28% 0, 28% 1px, 1px 1px, 1px 28%, 0 28%, 0 0, 100% 0, 100% 28%, calc(100% - 1px) 28%, calc(100% - 1px) 1px, 72% 1px, 72% 0);
+}
+
+.field::after {
+  inset: 24% 19%;
+  border-color: rgba(190, 240, 255, 0.11);
+  transform: rotate(180deg);
+}
+
+.axis {
+  position: absolute;
+  z-index: -4;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  opacity: 0.52;
+}
+
+.axis-horizontal {
+  width: min(76vw, 58rem);
+  height: 1px;
+}
+
+.axis-vertical {
+  width: 1px;
+  height: min(58vh, 34rem);
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+}
+
+.frame {
   position: absolute;
   z-index: -3;
-  width: min(58vw, 46rem);
-  aspect-ratio: 1;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 50%;
-  filter: drop-shadow(0 0 26px rgba(125, 211, 252, 0.18));
-}
-
-.signal::before,
-.signal::after {
-  position: absolute;
-  inset: 11%;
-  content: "";
-  border: inherit;
-  border-radius: inherit;
-}
-
-.signal::after {
-  inset: 23%;
-}
-
-.signal-one {
-  transform: rotate(-18deg) scaleX(1.28);
-}
-
-.signal-two {
-  border-color: rgba(255, 255, 255, 0.08);
-  transform: rotate(28deg) scaleX(0.86);
-}
-
-.mark {
-  position: absolute;
-  z-index: -2;
-  width: min(38vw, 28rem);
-  aspect-ratio: 1;
-  border-radius: 50%;
+  width: min(68vw, 42rem);
+  aspect-ratio: 1.85;
+  border: 1px solid rgba(255, 255, 255, 0.11);
   background:
-    conic-gradient(
-      from 210deg,
-      transparent 0deg,
-      rgba(250, 250, 250, 0.92) 18deg,
-      rgba(34, 211, 238, 0.34) 52deg,
-      transparent 98deg,
-      transparent 360deg
-    );
-  opacity: 0.62;
-  filter: blur(0.5px);
-  animation: breathe 7s ease-in-out infinite;
+    linear-gradient(90deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0)) top left / 34% 1px no-repeat,
+    linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(190, 240, 255, 0.32)) bottom right / 34% 1px no-repeat,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0)) top left / 1px 34% no-repeat,
+    linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(190, 240, 255, 0.28)) bottom right / 1px 34% no-repeat;
+  box-shadow:
+    0 0 32px rgba(190, 240, 255, 0.045),
+    inset 0 0 42px rgba(255, 255, 255, 0.025);
+  transform: perspective(900px) rotateX(0deg);
+}
+
+.frame::before,
+.frame::after {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #f4efe6;
+  box-shadow: 0 0 18px rgba(190, 240, 255, 0.65);
+}
+
+.frame::before {
+  top: -3px;
+  left: 18%;
+}
+
+.frame::after {
+  right: 18%;
+  bottom: -3px;
 }
 
 h1 {
-  max-width: min(88vw, 48rem);
+  max-width: min(88vw, 50rem);
   margin: 0;
-  padding: 0 1rem;
-  color: #fffaf0;
-  font-size: clamp(2rem, 5vw, 4.4rem);
+  padding: 0 1rem 0.2rem;
+  color: #fbf4e9;
+  font-size: clamp(2.6rem, 6vw, 5.7rem);
   font-weight: 500;
-  line-height: 1;
+  line-height: 0.96;
   text-align: center;
   text-shadow:
-    0 0 18px rgba(255, 255, 255, 0.22),
-    0 22px 60px rgba(0, 0, 0, 0.84);
-}
-
-@keyframes breathe {
-  0%,
-  100% {
-    transform: rotate(0deg) scale(0.96);
-  }
-
-  50% {
-    transform: rotate(14deg) scale(1.04);
-  }
+    0 1px 0 rgba(255, 255, 255, 0.34),
+    0 0 28px rgba(200, 235, 255, 0.14),
+    0 24px 70px rgba(0, 0, 0, 0.9);
 }
 
 @media (max-width: 640px) {
   .stage {
     background:
-      radial-gradient(circle at 50% 49%, rgba(255, 255, 255, 0.1), transparent 6rem),
-      radial-gradient(circle at 36% 42%, rgba(74, 222, 128, 0.16), transparent 11rem),
-      radial-gradient(circle at 66% 58%, rgba(56, 189, 248, 0.13), transparent 12rem),
-      #030303;
+      linear-gradient(115deg, transparent 0 38%, rgba(255, 255, 255, 0.05) 38.1% 38.25%, transparent 38.35%),
+      linear-gradient(245deg, transparent 0 48%, rgba(170, 230, 255, 0.055) 48.1% 48.24%, transparent 48.34%),
+      radial-gradient(ellipse at center, #101010 0%, #050505 44%, #000 78%);
   }
 
-  .signal {
-    width: 25rem;
+  .field {
+    background-size: 64px 64px;
   }
 
-  .mark {
-    width: 16rem;
+  .frame {
+    width: 84vw;
+    aspect-ratio: 1.35;
+  }
+
+  .axis-horizontal {
+    width: 86vw;
+  }
+
+  .axis-vertical {
+    height: 44vh;
   }
 }

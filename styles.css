@@ -1,8 +1,8 @@
 :root {
   color-scheme: dark;
   font-family: "Cormorant Garamond", Georgia, serif;
-  background: #000;
-  color: #f4efe6;
+  background: #07050b;
+  color: #f7efe4;
 }
 
 * {
@@ -18,7 +18,7 @@ body {
 
 body {
   overflow: hidden;
-  background: #000;
+  background: #07050b;
 }
 
 .stage {
@@ -28,130 +28,51 @@ body {
   place-items: center;
   isolation: isolate;
   background:
-    linear-gradient(115deg, transparent 0 41%, rgba(255, 255, 255, 0.045) 41.1% 41.25%, transparent 41.35%),
-    linear-gradient(245deg, transparent 0 43%, rgba(170, 230, 255, 0.06) 43.1% 43.22%, transparent 43.32%),
-    radial-gradient(ellipse at center, #101010 0%, #050505 42%, #000 75%);
+    radial-gradient(circle at 52% 44%, rgba(35, 48, 72, 0.34), transparent 24rem),
+    radial-gradient(circle at 16% 24%, rgba(40, 64, 94, 0.16), transparent 19rem),
+    linear-gradient(180deg, #0c0710 0%, #050407 56%, #000 100%);
 }
 
-.field {
+.stage::after {
   position: absolute;
   inset: 0;
-  z-index: -5;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
-  background-size: 96px 96px;
-  mask-image: radial-gradient(ellipse at center, black 0%, transparent 68%);
-  opacity: 0.32;
-}
-
-.field::before,
-.field::after {
-  position: absolute;
+  z-index: -1;
   content: "";
-  inset: 17% 12%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  clip-path: polygon(0 0, 28% 0, 28% 1px, 1px 1px, 1px 28%, 0 28%, 0 0, 100% 0, 100% 28%, calc(100% - 1px) 28%, calc(100% - 1px) 1px, 72% 1px, 72% 0);
-}
-
-.field::after {
-  inset: 24% 19%;
-  border-color: rgba(190, 240, 255, 0.11);
-  transform: rotate(180deg);
-}
-
-.axis {
-  position: absolute;
-  z-index: -4;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
-  opacity: 0.52;
-}
-
-.axis-horizontal {
-  width: min(76vw, 58rem);
-  height: 1px;
-}
-
-.axis-vertical {
-  width: 1px;
-  height: min(58vh, 34rem);
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.16), transparent);
-}
-
-.frame {
-  position: absolute;
-  z-index: -3;
-  width: min(68vw, 42rem);
-  aspect-ratio: 1.85;
-  border: 1px solid rgba(255, 255, 255, 0.11);
+  pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0)) top left / 34% 1px no-repeat,
-    linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(190, 240, 255, 0.32)) bottom right / 34% 1px no-repeat,
-    linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0)) top left / 1px 34% no-repeat,
-    linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(190, 240, 255, 0.28)) bottom right / 1px 34% no-repeat;
-  box-shadow:
-    0 0 32px rgba(190, 240, 255, 0.045),
-    inset 0 0 42px rgba(255, 255, 255, 0.025);
-  transform: perspective(900px) rotateX(0deg);
+    radial-gradient(ellipse at center, transparent 0%, transparent 46%, rgba(0, 0, 0, 0.78) 100%),
+    linear-gradient(rgba(255, 255, 255, 0.018) 50%, transparent 50%);
+  background-size: auto, 100% 4px;
+  mix-blend-mode: screen;
+  opacity: 0.7;
 }
 
-.frame::before,
-.frame::after {
+#particle-field {
   position: absolute;
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: #f4efe6;
-  box-shadow: 0 0 18px rgba(190, 240, 255, 0.65);
-}
-
-.frame::before {
-  top: -3px;
-  left: 18%;
-}
-
-.frame::after {
-  right: 18%;
-  bottom: -3px;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 h1 {
-  max-width: min(88vw, 50rem);
+  max-width: min(88vw, 54rem);
   margin: 0;
-  padding: 0 1rem 0.2rem;
-  color: #fbf4e9;
-  font-size: clamp(2.6rem, 6vw, 5.7rem);
+  padding: 0 1rem 0.35rem;
+  color: #fff6e9;
+  font-size: clamp(3rem, 6.2vw, 6rem);
   font-weight: 500;
-  line-height: 0.96;
+  line-height: 0.92;
   text-align: center;
   text-shadow:
     0 1px 0 rgba(255, 255, 255, 0.34),
-    0 0 28px rgba(200, 235, 255, 0.14),
-    0 24px 70px rgba(0, 0, 0, 0.9);
+    0 0 30px rgba(186, 219, 255, 0.22),
+    0 22px 70px rgba(0, 0, 0, 0.94);
 }
 
 @media (max-width: 640px) {
-  .stage {
-    background:
-      linear-gradient(115deg, transparent 0 38%, rgba(255, 255, 255, 0.05) 38.1% 38.25%, transparent 38.35%),
-      linear-gradient(245deg, transparent 0 48%, rgba(170, 230, 255, 0.055) 48.1% 48.24%, transparent 48.34%),
-      radial-gradient(ellipse at center, #101010 0%, #050505 44%, #000 78%);
-  }
-
-  .field {
-    background-size: 64px 64px;
-  }
-
-  .frame {
-    width: 84vw;
-    aspect-ratio: 1.35;
-  }
-
-  .axis-horizontal {
-    width: 86vw;
-  }
-
-  .axis-vertical {
-    height: 44vh;
+  h1 {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
   }
 }

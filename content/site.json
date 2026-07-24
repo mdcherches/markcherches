@@ -1,7 +1,7 @@
 {
   "meta": {
     "siteTitle": "Mark Cherches",
-    "description": "Mark Cherches — researcher, builder, and investor interested in AI, policy, and real-world impact.",
+    "description": "Mark Cherches — AI @ Stanford",
     "initials": "MC",
     "ownerName": "Mark Cherches",
     "year": "2026"
@@ -9,7 +9,7 @@
   "home": {
     "firstName": "Mark",
     "lastName": "Cherches",
-    "eyebrow": "CS @ Stanford",
+    "eyebrow": "AI @ Stanford",
     "summary": "Researcher, builder, and investor interested in AI, policy, and building technology for real-world impact.",
     "ctaLabel": "Explore",
     "ctaTarget": "#about",
@@ -24,8 +24,7 @@
     ],
     "image": "/assets/images/campus-placeholder.svg",
     "imageAlt": "Placeholder for a Stanford campus photograph",
-    "resumeLabel": "Resume.pdf",
-    "resumeUrl": ""
+    "resumeLabel": "Resume.pdf"
   },
   "projects": {
     "heading": "Projects",
@@ -61,25 +60,24 @@
     "intro": "Where I’ve worked and learned.",
     "items": [
       {
-        "period": "2025 — Present",
-        "role": "Investment Banking Analyst",
-        "organization": "RBC Capital Markets",
-        "detail": "Power, Utilities & Infrastructure",
-        "mark": "RBC"
-      },
-      {
-        "period": "2024 — Present",
+        "period": "June 2026 — Present",
         "role": "AI Policy Researcher",
         "organization": "PIT Policy Lab",
         "detail": "Technology and public-interest policy",
         "mark": "Stanford"
       },
       {
-        "period": "2023 — 2024",
-        "role": "Research Intern",
+        "period": "March 2026 — Present",
+        "role": "Tech Ethics & Policy Fellow",
         "organization": "Stanford HAI",
         "detail": "Human-centered artificial intelligence",
         "mark": "Stanford HAI"
+      },
+      {
+        "period": "January 2024 - August 2025",
+        "role": "Operations Intern",
+        "organization": "McDonogh School",
+        "detail": "Operations"
       }
     ],
     "footerLabel": "View full timeline",
@@ -118,8 +116,8 @@
     "items": [
       {
         "icon": "email",
-        "label": "markcherches@stanford.edu",
-        "url": "mailto:markcherches@stanford.edu"
+        "label": "cherches@stanford.edu",
+        "url": "mailto:cherches@stanford.edu"
       },
       {
         "icon": "linkedin",
@@ -147,7 +145,7 @@
     {
       "icon": "email",
       "label": "Email",
-      "url": "mailto:markcherches@stanford.edu"
+      "url": "mailto:cherches@stanford.edu"
     }
   ]
 }

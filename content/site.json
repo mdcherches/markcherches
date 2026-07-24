@@ -13,8 +13,8 @@
     "summary": "Researcher and builder working across AI policy, applied research, and data-driven tools for real-world decisions.",
     "ctaLabel": "Explore",
     "ctaTarget": "#about",
-    "image": "/assets/images/cherches-stanford-headshot.svg",
-    "imageAlt": "Placeholder for a portrait of Mark Cherches"
+    "image": "/assets/images/cherches-stanford-headshot.png",
+    "imageAlt": "Portrait of Mark Cherches at Stanford"
   },
   "about": {
     "heading": "About",
@@ -22,7 +22,7 @@
       "I’m a computer science student at Stanford University concentrating in artificial intelligence. I’m interested in how AI systems move from technical capability to useful, responsible adoption.",
       "My work spans AI policy research, social-impact consulting, and applied data tools — from studying adoption barriers across Mexico’s key industries to improving school transportation and financial planning."
     ],
-    "image": "/assets/images/campus-placeholder.svg",
+    "image": "/assets/images/campus-placeholder.png",
     "imageAlt": "Placeholder for a Stanford campus photograph",
     "resumeLabel": "Resume available on request",
     "resumeUrl": "#contact"
@@ -35,14 +35,14 @@
         "title": "AI-Assisted School Transportation",
         "description": "A data pipeline and LLM-assisted workflow that identifies underserved regions and generates route-level transportation recommendations.",
         "meta": "Python · LLMs · Data Processing · Spatial Analysis",
-        "image": "/assets/images/project-transportation-placeholder.svg",
+        "image": "/assets/images/project-transportation-placeholder.png",
         "url": "#projects"
       },
       {
         "title": "Financial Data Analytics Platform",
         "description": "A unified reporting platform that reconciles multi-year budgets, ledgers, journal entries, and receipt-level records.",
         "meta": "Excel · Financial Modeling · Data Analysis",
-        "image": "/assets/images/project-finance-placeholder.svg",
+        "image": "/assets/images/project-finance-placeholder.png",
         "url": "#projects"
       }
     ],

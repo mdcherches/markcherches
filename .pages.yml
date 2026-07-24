@@ -3,7 +3,8 @@ media:
     label: Images
     input: assets/images
     output: /assets/images
-    extensions: [jpg, jpeg, png, webp, avif, svg]
+    extensions: [jpg, jpeg, png, webp]
+    categories: [image]
     rename: safe
 
 content:
@@ -70,8 +71,10 @@ content:
           - name: image
             label: Portrait
             type: image
+            description: Upload a JPG, JPEG, PNG, or WebP image.
             options:
               media: images
+              extensions: [jpg, jpeg, png, webp]
           - name: imageAlt
             label: Portrait description
             type: string
@@ -92,8 +95,10 @@ content:
           - name: image
             label: About image
             type: image
+            description: Upload a JPG, JPEG, PNG, or WebP image.
             options:
               media: images
+              extensions: [jpg, jpeg, png, webp]
           - name: imageAlt
             label: Image description
             type: string
@@ -138,8 +143,10 @@ content:
               - name: image
                 label: Thumbnail
                 type: image
+                description: Upload a JPG, JPEG, PNG, or WebP image.
                 options:
                   media: images
+                  extensions: [jpg, jpeg, png, webp]
               - name: url
                 label: Project link
                 type: string

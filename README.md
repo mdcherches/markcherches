@@ -13,7 +13,7 @@ The repository includes a [Pages CMS](https://pagescms.org) configuration. Pages
 5. Edit text, reorder list items, or upload images.
 6. Save. Pages CMS commits the update to `main`, and GitHub Pages publishes it automatically.
 
-All editable text and links live in `content/site.json`. Uploaded images go in `assets/images`.
+All editable text and links live in `content/site.json`. Uploaded JPG, JPEG, PNG, and WebP images go in `assets/images`.
 
 ## Preview locally
 

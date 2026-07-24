@@ -40,7 +40,7 @@ function icon(name) {
 }
 
 function imageMarkup(src, alt, className) {
-  const path = src || "/assets/images/image-placeholder.svg";
+  const path = src || "/assets/images/portrait-placeholder.png";
   return `
     <div class="media-frame ${className}">
       <img src="${safeURL(path)}" alt="${escapeHTML(alt || "")}">

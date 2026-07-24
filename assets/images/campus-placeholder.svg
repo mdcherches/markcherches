@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Campus image placeholder</title>
+  <desc id="desc">An architectural monochrome placeholder to be replaced in the portfolio editor.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#e7e7e2"/>
+      <stop offset="1" stop-color="#b9bab6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <path d="M0 800h1200v100H0z" fill="#8c8c87"/>
+  <path d="M548 265h104v535H548zM528 293h144l-72-100zM566 217h68l-34-91z" fill="#545652"/>
+  <path d="M82 522h390v278H82zM728 522h390v278H728z" fill="#6c6e69"/>
+  <g fill="#c4c5c0">
+    <path d="M126 558h52v242h-52zM224 558h52v242h-52zM322 558h52v242h-52zM420 558h52v242h-52z"/>
+    <path d="M728 558h52v242h-52zM826 558h52v242h-52zM924 558h52v242h-52zM1022 558h52v242h-52z"/>
+  </g>
+  <g fill="#343633">
+    <path d="M0 0h210v900H0zM990 0h210v900H990z"/>
+    <path d="M150 0h900v120H150z"/>
+  </g>
+  <path d="M155 448C155 212 351 67 600 67s445 145 445 381h-90c0-174-155-290-355-290S245 274 245 448z" fill="#343633"/>
+  <g fill="none" stroke="#ecece8" stroke-opacity=".25" stroke-width="3">
+    <path d="M95 0v900M165 0v900M1035 0v900M1105 0v900"/>
+    <path d="M0 77h1200M0 150h1200"/>
+  </g>
+  <text x="600" y="854" text-anchor="middle" fill="#e8e8e4" font-family="monospace" font-size="19" letter-spacing="3">ABOUT IMAGE — REPLACE IN CMS</text>
+</svg>

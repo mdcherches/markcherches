@@ -3,19 +3,72 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Mark Cherches">
+    <meta name="theme-color" content="#f4f3ef">
+    <meta name="description" content="Mark Cherches — researcher, builder, and investor.">
     <title>Mark Cherches</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%228%22 fill=%22%2311110f%22/><text x=%2232%22 y=%2240%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2223%22 fill=%22%23f4f3ef%22>MC</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    >
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <main class="stage" aria-label="Mark Cherches homepage">
-      <canvas id="particle-field" aria-hidden="true"></canvas>
+    <a class="skip-link" href="#content">Skip to content</a>
 
-      <h1>Mark Cherches</h1>
-    </main>
-    <script src="script.js"></script>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="monogram" href="#home" aria-label="Mark Cherches, home">MC</a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="#about" data-route-link="about">About</a>
+          <a href="#experience" data-route-link="experience">Experience</a>
+          <a href="#projects" data-route-link="projects">Projects</a>
+          <a href="#research" data-route-link="research">Research</a>
+        </nav>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="menu-panel"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="menu-panel" id="menu-panel" aria-label="Expanded navigation" hidden>
+          <a href="#about" data-route-link="about">About</a>
+          <a href="#experience" data-route-link="experience">Experience</a>
+          <a href="#projects" data-route-link="projects">Projects</a>
+          <a href="#research" data-route-link="research">Research</a>
+          <a href="#contact" data-route-link="contact">Contact</a>
+        </nav>
+      </header>
+
+      <main id="content" class="page-content" tabindex="-1" aria-live="polite">
+        <div class="loading-state">
+          <span>Loading portfolio</span>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <p class="copyright">© <span id="footer-year">2026</span> <span id="footer-name">Mark Cherches</span></p>
+        <div class="social-links" id="social-links" aria-label="Social links"></div>
+      </footer>
+    </div>
+
+    <template id="icon-template">
+      <svg viewBox="0 0 24 24" aria-hidden="true"></svg>
+    </template>
+
+    <noscript>
+      <p class="noscript-message">Please enable JavaScript to view this portfolio.</p>
+    </noscript>
   </body>
 </html>

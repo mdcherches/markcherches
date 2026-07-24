@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 960" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait placeholder</title>
+  <desc id="desc">An abstract monochrome portrait placeholder to be replaced in the portfolio editor.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#dfe2e0"/>
+      <stop offset="1" stop-color="#a7acab"/>
+    </linearGradient>
+    <radialGradient id="light">
+      <stop stop-color="#f4f5f2" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#f4f5f2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="960" fill="url(#bg)"/>
+  <circle cx="220" cy="160" r="340" fill="url(#light)"/>
+  <path d="M0 705c160-112 290-150 430-102 137 47 254 13 470-125v482H0z" fill="#8b9494"/>
+  <path d="M309 960c12-155 55-261 145-307-51-42-82-106-82-178 0-126 91-228 203-228s203 102 203 228c0 75-32 141-85 183 84 54 126 155 135 302z" fill="#242828"/>
+  <path d="M479 387c25-86 95-144 174-137 85 8 145 91 134 187-12 102-82 192-169 177-81-13-170-104-139-227z" fill="#b8b9b5"/>
+  <path d="M476 390c15-104 96-173 185-154 77 16 123 87 117 170-34-19-63-52-81-92-62 48-134 72-221 76z" fill="#303333"/>
+  <path d="M520 495c31 31 78 41 119 23" fill="none" stroke="#767874" stroke-width="8" stroke-linecap="round"/>
+  <text x="54" y="900" fill="#eceeeb" font-family="monospace" font-size="20" letter-spacing="3">PORTRAIT — REPLACE IN CMS</text>
+</svg>

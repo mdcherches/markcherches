@@ -1,0 +1,303 @@
+media:
+  - name: images
+    label: Images
+    input: assets/images
+    output: /assets/images
+    extensions: [jpg, jpeg, png, webp, avif, svg]
+    rename: safe
+  - name: documents
+    label: Documents
+    input: assets/documents
+    output: /assets/documents
+    categories: [document]
+    rename: safe
+
+content:
+  - name: portfolio
+    label: Portfolio content
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: meta
+        label: Site settings
+        type: object
+        fields:
+          - name: siteTitle
+            label: Browser title
+            type: string
+            required: true
+          - name: description
+            label: Search description
+            type: text
+            required: true
+          - name: initials
+            label: Header initials
+            type: string
+            required: true
+          - name: ownerName
+            label: Footer name
+            type: string
+            required: true
+          - name: year
+            label: Footer year
+            type: string
+            required: true
+
+      - name: home
+        label: Home page
+        type: object
+        fields:
+          - name: firstName
+            label: First name
+            type: string
+            required: true
+          - name: lastName
+            label: Last name
+            type: string
+            required: true
+          - name: eyebrow
+            label: Short headline
+            type: string
+            required: true
+          - name: summary
+            label: Introduction
+            type: text
+            required: true
+          - name: ctaLabel
+            label: Button label
+            type: string
+            required: true
+          - name: ctaTarget
+            label: Button link
+            type: string
+            required: true
+            description: Use a section link such as #about or a full URL.
+          - name: image
+            label: Portrait
+            type: image
+            options:
+              media: images
+          - name: imageAlt
+            label: Portrait description
+            type: string
+
+      - name: about
+        label: About page
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+            required: true
+          - name: paragraphs
+            label: Paragraphs
+            type: text
+            list: true
+            required: true
+          - name: image
+            label: About image
+            type: image
+            options:
+              media: images
+          - name: imageAlt
+            label: Image description
+            type: string
+          - name: resumeLabel
+            label: Resume link label
+            type: string
+          - name: resumeUrl
+            label: Resume file
+            type: file
+            options:
+              media: documents
+              extensions: [pdf]
+
+      - name: projects
+        label: Projects page
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+            required: true
+          - name: intro
+            label: Introduction
+            type: string
+          - name: items
+            label: Projects
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - name: title
+                label: Project name
+                type: string
+                required: true
+              - name: description
+                label: Description
+                type: text
+                required: true
+              - name: meta
+                label: Technologies
+                type: string
+              - name: image
+                label: Thumbnail
+                type: image
+                options:
+                  media: images
+              - name: url
+                label: Project link
+                type: string
+          - name: footerLabel
+            label: Footer link label
+            type: string
+          - name: footerUrl
+            label: Footer link
+            type: string
+
+      - name: experience
+        label: Experience page
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+            required: true
+          - name: intro
+            label: Introduction
+            type: string
+          - name: items
+            label: Roles
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{role} — {organization}"
+            fields:
+              - name: period
+                label: Dates
+                type: string
+                required: true
+              - name: role
+                label: Role
+                type: string
+                required: true
+              - name: organization
+                label: Organization
+                type: string
+                required: true
+              - name: detail
+                label: Team or focus
+                type: string
+              - name: mark
+                label: Short organization mark
+                type: string
+          - name: footerLabel
+            label: Footer link label
+            type: string
+          - name: footerUrl
+            label: Footer link
+            type: string
+
+      - name: research
+        label: Research page
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+            required: true
+          - name: intro
+            label: Introduction
+            type: string
+          - name: items
+            label: Research items
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title} ({year})"
+            fields:
+              - name: year
+                label: Year
+                type: string
+              - name: title
+                label: Title
+                type: string
+                required: true
+              - name: topic
+                label: Topic tags
+                type: string
+              - name: description
+                label: Description
+                type: text
+              - name: url
+                label: Link
+                type: string
+
+      - name: contact
+        label: Contact page
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+            required: true
+          - name: intro
+            label: Introduction
+            type: string
+          - name: items
+            label: Contact links
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+            fields:
+              - name: icon
+                label: Icon
+                type: select
+                options:
+                  values: [email, linkedin, github, link]
+              - name: label
+                label: Display text
+                type: string
+                required: true
+              - name: url
+                label: Link
+                type: string
+                required: true
+
+      - name: socials
+        label: Footer social links
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: icon
+            label: Icon
+            type: select
+            options:
+              values: [email, linkedin, github, link]
+          - name: label
+            label: Accessible label
+            type: string
+            required: true
+          - name: url
+            label: Link
+            type: string
+            required: true
+
+settings:
+  content:
+    merge: true
+  commit:
+    templates:
+      create: "content: create {name}"
+      update: "content: update portfolio"
+      delete: "content: remove {name}"

@@ -1,0 +1,153 @@
+{
+  "meta": {
+    "siteTitle": "Mark Cherches",
+    "description": "Mark Cherches — researcher, builder, and investor interested in AI, policy, and real-world impact.",
+    "initials": "MC",
+    "ownerName": "Mark Cherches",
+    "year": "2026"
+  },
+  "home": {
+    "firstName": "Mark",
+    "lastName": "Cherches",
+    "eyebrow": "CS @ Stanford",
+    "summary": "Researcher, builder, and investor interested in AI, policy, and building technology for real-world impact.",
+    "ctaLabel": "Explore",
+    "ctaTarget": "#about",
+    "image": "/assets/images/portrait-placeholder.svg",
+    "imageAlt": "Placeholder for a portrait of Mark Cherches"
+  },
+  "about": {
+    "heading": "About",
+    "paragraphs": [
+      "I’m a computer science student at Stanford University passionate about AI, policy, and building products that create real impact.",
+      "I enjoy working at the intersection of technology, business, and society — from research to open source to early stage ideas."
+    ],
+    "image": "/assets/images/campus-placeholder.svg",
+    "imageAlt": "Placeholder for a Stanford campus photograph",
+    "resumeLabel": "Resume.pdf",
+    "resumeUrl": ""
+  },
+  "projects": {
+    "heading": "Projects",
+    "intro": "A few things I’ve built.",
+    "items": [
+      {
+        "title": "vinyl-scrobbler",
+        "description": "Automatically scrobble your vinyl listens to Last.fm",
+        "meta": "Python · Spotipy · Last.fm API",
+        "image": "/assets/images/project-vinyl-placeholder.svg",
+        "url": "#projects"
+      },
+      {
+        "title": "feed-planner",
+        "description": "AI meal planner that generates recipes from macros",
+        "meta": "TypeScript · OpenAI · Next.js",
+        "image": "/assets/images/project-feed-placeholder.svg",
+        "url": "#projects"
+      },
+      {
+        "title": "debate-bot",
+        "description": "AI debate companion trained on academic arguments",
+        "meta": "Python · OpenAI · Streamlit",
+        "image": "/assets/images/project-debate-placeholder.svg",
+        "url": "#projects"
+      }
+    ],
+    "footerLabel": "View all on GitHub",
+    "footerUrl": "https://github.com/mdcherches"
+  },
+  "experience": {
+    "heading": "Experience",
+    "intro": "Where I’ve worked and learned.",
+    "items": [
+      {
+        "period": "2025 — Present",
+        "role": "Investment Banking Analyst",
+        "organization": "RBC Capital Markets",
+        "detail": "Power, Utilities & Infrastructure",
+        "mark": "RBC"
+      },
+      {
+        "period": "2024 — Present",
+        "role": "AI Policy Researcher",
+        "organization": "PIT Policy Lab",
+        "detail": "Technology and public-interest policy",
+        "mark": "Stanford"
+      },
+      {
+        "period": "2023 — 2024",
+        "role": "Research Intern",
+        "organization": "Stanford HAI",
+        "detail": "Human-centered artificial intelligence",
+        "mark": "Stanford HAI"
+      }
+    ],
+    "footerLabel": "View full timeline",
+    "footerUrl": "#experience"
+  },
+  "research": {
+    "heading": "Research",
+    "intro": "Questions I’m exploring.",
+    "items": [
+      {
+        "year": "2026",
+        "title": "AI and public institutions",
+        "topic": "Policy · Governance",
+        "description": "Exploring how public institutions can evaluate and responsibly adopt emerging AI systems.",
+        "url": "#research"
+      },
+      {
+        "year": "2025",
+        "title": "Human-centered AI evaluation",
+        "topic": "Research · Evaluation",
+        "description": "Studying practical methods for measuring the social impact and reliability of AI products.",
+        "url": "#research"
+      },
+      {
+        "year": "2024",
+        "title": "Technology for public impact",
+        "topic": "Technology · Society",
+        "description": "Examining the systems, incentives, and people that shape technology’s real-world outcomes.",
+        "url": "#research"
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Contact",
+    "intro": "Let’s build something cool.",
+    "items": [
+      {
+        "icon": "email",
+        "label": "markcherches@stanford.edu",
+        "url": "mailto:markcherches@stanford.edu"
+      },
+      {
+        "icon": "linkedin",
+        "label": "linkedin.com/in/markcherches",
+        "url": "https://www.linkedin.com/in/markcherches"
+      },
+      {
+        "icon": "github",
+        "label": "github.com/mdcherches",
+        "url": "https://github.com/mdcherches"
+      }
+    ]
+  },
+  "socials": [
+    {
+      "icon": "github",
+      "label": "GitHub",
+      "url": "https://github.com/mdcherches"
+    },
+    {
+      "icon": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/markcherches"
+    },
+    {
+      "icon": "email",
+      "label": "Email",
+      "url": "mailto:markcherches@stanford.edu"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "meta": {
     "siteTitle": "Mark Cherches",
-    "description": "Mark Cherches — AI @ Stanford",
+    "description": "Mark Cherches — Stanford computer science student working across AI, policy, and applied research.",
     "initials": "MC",
     "ownerName": "Mark Cherches",
     "year": "2026"
@@ -10,7 +10,7 @@
     "firstName": "Mark",
     "lastName": "Cherches",
     "eyebrow": "AI @ Stanford",
-    "summary": "Researcher, builder, and investor interested in AI, policy, and building technology for real-world impact.",
+    "summary": "Researcher and builder working across AI policy, applied research, and data-driven tools for real-world decisions.",
     "ctaLabel": "Explore",
     "ctaTarget": "#about",
     "image": "/assets/images/portrait-placeholder.svg",
@@ -19,36 +19,30 @@
   "about": {
     "heading": "About",
     "paragraphs": [
-      "I’m a computer science student at Stanford University passionate about AI, policy, and building products that create real impact.",
-      "I enjoy working at the intersection of technology, business, and society — from research to open source to early stage ideas."
+      "I’m a computer science student at Stanford University concentrating in artificial intelligence. I’m interested in how AI systems move from technical capability to useful, responsible adoption.",
+      "My work spans AI policy research, social-impact consulting, and applied data tools — from studying adoption barriers across Mexico’s key industries to improving school transportation and financial planning."
     ],
     "image": "/assets/images/campus-placeholder.svg",
     "imageAlt": "Placeholder for a Stanford campus photograph",
-    "resumeLabel": "Resume.pdf"
+    "resumeLabel": "Resume available on request",
+    "resumeUrl": "#contact"
   },
   "projects": {
     "heading": "Projects",
     "intro": "A few things I’ve built.",
     "items": [
       {
-        "title": "vinyl-scrobbler",
-        "description": "Automatically scrobble your vinyl listens to Last.fm",
-        "meta": "Python · Spotipy · Last.fm API",
-        "image": "/assets/images/project-vinyl-placeholder.svg",
+        "title": "AI-Assisted School Transportation",
+        "description": "A data pipeline and LLM-assisted workflow that identifies underserved regions and generates route-level transportation recommendations.",
+        "meta": "Python · LLMs · Data Processing · Spatial Analysis",
+        "image": "/assets/images/project-transportation-placeholder.svg",
         "url": "#projects"
       },
       {
-        "title": "feed-planner",
-        "description": "AI meal planner that generates recipes from macros",
-        "meta": "TypeScript · OpenAI · Next.js",
-        "image": "/assets/images/project-feed-placeholder.svg",
-        "url": "#projects"
-      },
-      {
-        "title": "debate-bot",
-        "description": "AI debate companion trained on academic arguments",
-        "meta": "Python · OpenAI · Streamlit",
-        "image": "/assets/images/project-debate-placeholder.svg",
+        "title": "Financial Data Analytics Platform",
+        "description": "A unified reporting platform that reconciles multi-year budgets, ledgers, journal entries, and receipt-level records.",
+        "meta": "Excel · Financial Modeling · Data Analysis",
+        "image": "/assets/images/project-finance-placeholder.svg",
         "url": "#projects"
       }
     ],
@@ -63,56 +57,64 @@
         "period": "June 2026 — Present",
         "role": "AI Policy Researcher",
         "organization": "PIT Policy Lab",
-        "detail": "Technology and public-interest policy",
-        "mark": "Stanford"
+        "detail": "AI adoption across Mexico’s manufacturing, finance, and healthcare sectors",
+        "mark": "PIT Policy Lab"
       },
       {
-        "period": "March 2026 — Present",
+        "period": "March 2026 — June 2026",
         "role": "Tech Ethics & Policy Fellow",
-        "organization": "Stanford HAI",
-        "detail": "Human-centered artificial intelligence",
+        "organization": "Stanford Institute for Human-Centered AI",
+        "detail": "Ethics, technology, and public policy",
         "mark": "Stanford HAI"
       },
       {
-        "period": "January 2024 - August 2025",
+        "period": "October 2025 — June 2026",
+        "role": "Analyst",
+        "organization": "SENSA Consulting",
+        "detail": "Market research, product analysis, and impact evaluation",
+        "mark": "SENSA"
+      },
+      {
+        "period": "October 2025 — June 2026",
+        "role": "Strategist",
+        "organization": "REM & Company",
+        "detail": "Market, consumer, and competitive strategy",
+        "mark": "REM & Co."
+      },
+      {
+        "period": "January 2024 — August 2025",
         "role": "Operations Intern",
         "organization": "McDonogh School",
-        "detail": "Operations"
+        "detail": "Operations, budgeting, and data analysis",
+        "mark": "McDonogh"
       }
     ],
-    "footerLabel": "View full timeline",
-    "footerUrl": "#experience"
+    "footerLabel": "Get in touch",
+    "footerUrl": "#contact"
   },
   "research": {
     "heading": "Research",
-    "intro": "Questions I’m exploring.",
+    "intro": "Current and recent work.",
     "items": [
       {
         "year": "2026",
-        "title": "AI and public institutions",
-        "topic": "Policy · Governance",
-        "description": "Exploring how public institutions can evaluate and responsibly adopt emerging AI systems.",
+        "title": "Barriers to AI adoption in Mexico",
+        "topic": "AI Policy · Market Research",
+        "description": "A nine-week study of implementation barriers across manufacturing, finance, and healthcare, informed by 20+ stakeholder interviews and market analysis.",
         "url": "#research"
       },
       {
-        "year": "2025",
-        "title": "Human-centered AI evaluation",
-        "topic": "Research · Evaluation",
-        "description": "Studying practical methods for measuring the social impact and reliability of AI products.",
-        "url": "#research"
-      },
-      {
-        "year": "2024",
-        "title": "Technology for public impact",
-        "topic": "Technology · Society",
-        "description": "Examining the systems, incentives, and people that shape technology’s real-world outcomes.",
+        "year": "2026",
+        "title": "Responsible technology policy",
+        "topic": "Technology Ethics · Public Policy",
+        "description": "Research memos and policy briefs translating complex technical risks into recommendations for responsible technology development and deployment.",
         "url": "#research"
       }
     ]
   },
   "contact": {
     "heading": "Contact",
-    "intro": "Let’s build something cool.",
+    "intro": "Interested in AI, policy, or building useful systems? Let’s talk.",
     "items": [
       {
         "icon": "email",
@@ -121,8 +123,8 @@
       },
       {
         "icon": "linkedin",
-        "label": "linkedin.com/in/markcherches",
-        "url": "https://www.linkedin.com/in/markcherches"
+        "label": "linkedin.com/in/mark-cherches",
+        "url": "https://www.linkedin.com/in/mark-cherches/"
       },
       {
         "icon": "github",
@@ -140,7 +142,7 @@
     {
       "icon": "linkedin",
       "label": "LinkedIn",
-      "url": "https://www.linkedin.com/in/markcherches"
+      "url": "https://www.linkedin.com/in/mark-cherches/"
     },
     {
       "icon": "email",

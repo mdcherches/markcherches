@@ -5,12 +5,6 @@ media:
     output: /assets/images
     extensions: [jpg, jpeg, png, webp, avif, svg]
     rename: safe
-  - name: documents
-    label: Documents
-    input: assets/documents
-    output: /assets/documents
-    categories: [document]
-    rename: safe
 
 content:
   - name: portfolio
@@ -104,14 +98,12 @@ content:
             label: Image description
             type: string
           - name: resumeLabel
-            label: Resume link label
+            label: Resume prompt
             type: string
           - name: resumeUrl
-            label: Resume file
-            type: file
-            options:
-              media: documents
-              extensions: [pdf]
+            label: Resume action link
+            type: string
+            description: Use #contact to send visitors to the contact page. Do not upload a private résumé.
 
       - name: projects
         label: Projects page

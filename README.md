@@ -10,10 +10,10 @@ The repository includes a [Pages CMS](https://pagescms.org) configuration. Pages
 2. Sign in with GitHub.
 3. Install the Pages CMS GitHub App for the `mdcherches/markcherches` repository when prompted.
 4. Open **Portfolio content**.
-5. Edit text, reorder list items, or upload images and a résumé.
+5. Edit text, reorder list items, or upload images.
 6. Save. Pages CMS commits the update to `main`, and GitHub Pages publishes it automatically.
 
-All editable text and links live in `content/site.json`. Uploaded images go in `assets/images`, and documents go in `assets/documents`.
+All editable text and links live in `content/site.json`. Uploaded images go in `assets/images`.
 
 ## Preview locally
 
@@ -32,4 +32,4 @@ Then open `http://localhost:4173`.
 - `script.js` — page rendering and interactions
 - `content/site.json` — all editable portfolio content
 - `.pages.yml` — visual editor fields
-- `assets/` — images and documents
+- `assets/` — portfolio images

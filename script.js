@@ -80,7 +80,7 @@ function aboutPage(data) {
         <div class="about-paragraphs mono-copy">${paragraphs}</div>
         <a class="resume-link" href="${safeURL(data.resumeUrl || "#about")}"${externalAttributes(data.resumeUrl)}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 18v3h14v-3"/>
+            <path d="M5 12h14m-5-5 5 5-5 5"/>
           </svg>
           ${escapeHTML(data.resumeLabel)}
         </a>

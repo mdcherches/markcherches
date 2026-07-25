@@ -126,6 +126,7 @@ function experiencePage(data) {
     .map(
       (entry, index) => {
         const detailsId = `experience-details-${index}`;
+        const roleLabel = `${entry.role} at ${entry.organization}`;
         const details = (entry.details || [])
           .map((detail) => `<li>${escapeHTML(detail)}</li>`)
           .join("");
@@ -144,12 +145,16 @@ function experiencePage(data) {
             type="button"
             aria-expanded="false"
             aria-controls="${detailsId}"
+            aria-label="View details for ${escapeHTML(roleLabel)}"
+            data-open-label="View details for ${escapeHTML(roleLabel)}"
+            data-close-label="Hide details for ${escapeHTML(roleLabel)}"
           >
-            <span class="experience-toggle-label">View role</span>
             <span class="experience-toggle-icon" aria-hidden="true">+</span>
           </button>
-          <div class="experience-panel" id="${detailsId}" hidden>
-            <ul>${details}</ul>
+          <div class="experience-panel" id="${detailsId}" aria-hidden="true">
+            <div class="experience-panel-inner">
+              <ul>${details}</ul>
+            </div>
           </div>
         </article>
       `
@@ -318,10 +323,11 @@ contentRoot.addEventListener("click", (event) => {
 
   const isOpen = button.getAttribute("aria-expanded") === "true";
   button.setAttribute("aria-expanded", String(!isOpen));
-  button.querySelector(".experience-toggle-label").textContent = isOpen
-    ? "View role"
-    : "Close role";
-  panel.hidden = isOpen;
+  button.setAttribute(
+    "aria-label",
+    isOpen ? button.dataset.openLabel : button.dataset.closeLabel
+  );
+  panel.setAttribute("aria-hidden", String(isOpen));
 });
 
 window.addEventListener("hashchange", () => renderRoute({ focus: true }));

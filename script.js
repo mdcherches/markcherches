@@ -124,7 +124,13 @@ function projectsPage(data) {
 function experiencePage(data) {
   const items = (data.items || [])
     .map(
-      (entry) => `
+      (entry, index) => {
+        const detailsId = `experience-details-${index}`;
+        const details = (entry.details || [])
+          .map((detail) => `<li>${escapeHTML(detail)}</li>`)
+          .join("");
+
+        return `
         <article class="experience-row">
           <span class="timeline-dot" aria-hidden="true"></span>
           <p class="experience-period">${escapeHTML(entry.period)}</p>
@@ -133,9 +139,21 @@ function experiencePage(data) {
             <p>${escapeHTML(entry.organization)}</p>
             <p class="experience-detail">${escapeHTML(entry.detail)}</p>
           </div>
-          <p class="experience-org">${escapeHTML(entry.mark)}</p>
+          <button
+            class="experience-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="${detailsId}"
+          >
+            <span class="experience-toggle-label">View role</span>
+            <span class="experience-toggle-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="experience-panel" id="${detailsId}" hidden>
+            <ul>${details}</ul>
+          </div>
         </article>
       `
+      }
     )
     .join("");
 
@@ -289,6 +307,21 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenu();
+});
+
+contentRoot.addEventListener("click", (event) => {
+  const button = event.target.closest(".experience-toggle");
+  if (!button) return;
+
+  const panel = document.getElementById(button.getAttribute("aria-controls"));
+  if (!panel) return;
+
+  const isOpen = button.getAttribute("aria-expanded") === "true";
+  button.setAttribute("aria-expanded", String(!isOpen));
+  button.querySelector(".experience-toggle-label").textContent = isOpen
+    ? "View role"
+    : "Close role";
+  panel.hidden = isOpen;
 });
 
 window.addEventListener("hashchange", () => renderRoute({ focus: true }));

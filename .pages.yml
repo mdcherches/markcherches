@@ -191,9 +191,11 @@ content:
               - name: detail
                 label: Team or focus
                 type: string
-              - name: mark
-                label: Short organization mark
-                type: string
+              - name: details
+                label: Expanded role details
+                description: Add the bullet points shown when a visitor opens this role.
+                type: text
+                list: true
           - name: footerLabel
             label: Footer link label
             type: string

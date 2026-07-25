@@ -506,12 +506,72 @@ img {
   font: 0.68rem var(--mono);
 }
 
-.experience-org {
+.experience-toggle {
   justify-self: end;
-  max-width: 8rem;
-  text-align: right;
-  font-size: 0.78rem;
-  line-height: 1.25;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0;
+  border: 0;
+  background: transparent;
+  font: 0.68rem var(--mono);
+  cursor: pointer;
+}
+
+.experience-toggle-label {
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease;
+}
+
+.experience-toggle:hover .experience-toggle-label {
+  border-color: currentColor;
+}
+
+.experience-toggle:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 0.35rem;
+}
+
+.experience-toggle-icon {
+  display: grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  place-items: center;
+  font: 0.9rem/1 var(--sans);
+  transition:
+    border-color 160ms ease,
+    transform 180ms ease;
+}
+
+.experience-toggle[aria-expanded="true"] .experience-toggle-icon {
+  border-color: rgba(17, 17, 15, 0.4);
+  transform: rotate(45deg);
+}
+
+.experience-panel {
+  grid-column: 3 / -1;
+  padding: 0 0 1.65rem;
+}
+
+.experience-panel[hidden] {
+  display: none;
+}
+
+.experience-panel ul {
+  display: grid;
+  gap: 0.7rem;
+  max-width: 52rem;
+  margin: -0.35rem 0 0;
+  padding: 1.15rem 1.3rem 0 1.45rem;
+  border-top: 1px solid var(--soft-line);
+}
+
+.experience-panel li {
+  padding-left: 0.25rem;
+  color: #343430;
+  font: 0.72rem/1.55 var(--mono);
 }
 
 /* Research */
@@ -811,7 +871,8 @@ img {
 
   .experience-period,
   .experience-main,
-  .experience-org {
+  .experience-toggle,
+  .experience-panel {
     grid-column: 2;
   }
 
@@ -823,16 +884,23 @@ img {
     align-self: center;
   }
 
-  .experience-org {
+  .experience-toggle {
     justify-self: start;
-    max-width: none;
-    text-align: left;
-    color: var(--muted);
+    margin-top: 0.35rem;
   }
 
   .timeline-dot {
-    grid-row: 1 / 4;
+    grid-row: 1 / 5;
     align-self: center;
+  }
+
+  .experience-panel {
+    padding-bottom: 0.6rem;
+  }
+
+  .experience-panel ul {
+    margin-top: 0;
+    padding: 1rem 0 0 1.2rem;
   }
 
   .research-row {

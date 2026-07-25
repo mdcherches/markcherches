@@ -102,13 +102,13 @@ content:
           - name: imageAlt
             label: Image description
             type: string
-          - name: resumeLabel
-            label: Resume prompt
+          - name: contactLabel
+            label: Contact link label
             type: string
-          - name: resumeUrl
-            label: Resume action link
+          - name: contactUrl
+            label: Contact link
             type: string
-            description: Use #contact to send visitors to the contact page. Do not upload a private résumé.
+            description: Use #contact to send visitors to the contact page.
 
       - name: projects
         label: Projects page

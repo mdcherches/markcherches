@@ -78,11 +78,8 @@ function aboutPage(data) {
       <div class="about-copy">
         <h1 class="page-heading" id="about-title">${escapeHTML(data.heading)}</h1>
         <div class="about-paragraphs mono-copy">${paragraphs}</div>
-        <a class="resume-link" href="${safeURL(data.resumeUrl || "#about")}"${externalAttributes(data.resumeUrl)}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M5 12h14m-5-5 5 5-5 5"/>
-          </svg>
-          ${escapeHTML(data.resumeLabel)}
+        <a class="inline-link about-contact-link" href="${safeURL(data.contactUrl || "#contact")}"${externalAttributes(data.contactUrl)}>
+          ${escapeHTML(data.contactLabel || "Contact me")}
         </a>
       </div>
       ${imageMarkup(data.image, data.imageAlt, "about-image")}
@@ -127,19 +124,12 @@ function experiencePage(data) {
       (entry, index) => {
         const detailsId = `experience-details-${index}`;
         const roleLabel = `${entry.role} at ${entry.organization}`;
-        const details = (entry.details || [])
+        const roleDetails = entry.details || [];
+        const details = roleDetails
           .map((detail) => `<li>${escapeHTML(detail)}</li>`)
           .join("");
-
-        return `
-        <article class="experience-row">
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <p class="experience-period">${escapeHTML(entry.period)}</p>
-          <div class="experience-main">
-            <h2>${escapeHTML(entry.role)}</h2>
-            <p>${escapeHTML(entry.organization)}</p>
-            <p class="experience-detail">${escapeHTML(entry.detail)}</p>
-          </div>
+        const disclosure = roleDetails.length
+          ? `
           <button
             class="experience-toggle"
             type="button"
@@ -156,6 +146,19 @@ function experiencePage(data) {
               <ul>${details}</ul>
             </div>
           </div>
+        `
+          : "";
+
+        return `
+        <article class="experience-row">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <p class="experience-period">${escapeHTML(entry.period)}</p>
+          <div class="experience-main">
+            <h2>${escapeHTML(entry.role)}</h2>
+            <p>${escapeHTML(entry.organization)}</p>
+            <p class="experience-detail">${escapeHTML(entry.detail)}</p>
+          </div>
+          ${disclosure}
         </article>
       `
       }

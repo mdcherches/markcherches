@@ -24,8 +24,8 @@
     ],
     "image": "/assets/images/stanfordpalmdrive2sjb-1.jpeg",
     "imageAlt": "Palm Drive at Stanford University",
-    "resumeLabel": "Resume available on request",
-    "resumeUrl": "#contact"
+    "contactLabel": "Contact me",
+    "contactUrl": "#contact"
   },
   "projects": {
     "heading": "Projects",
@@ -57,31 +57,53 @@
         "period": "June 2026 — Present",
         "role": "AI Policy Researcher",
         "organization": "PIT Policy Lab",
-        "detail": "AI adoption across Mexico’s manufacturing, finance, and healthcare sectors"
+        "detail": "AI adoption across Mexico’s manufacturing, finance, and healthcare sectors",
+        "details": [
+          "Lead a nine-week research project examining barriers to AI adoption across Mexico’s manufacturing, finance, and healthcare sectors.",
+          "Design the research methodology, interview protocols, and stakeholder strategy for 20+ interviews across companies, industry associations, and government.",
+          "Synthesize qualitative and market data into implementation bottlenecks, startup opportunities, and evidence-based policy recommendations."
+        ]
       },
       {
         "period": "March 2026 — June 2026",
         "role": "Tech Ethics & Policy Fellow",
         "organization": "Stanford Institute for Human-Centered AI",
-        "detail": "Ethics, technology, and public policy"
+        "detail": "Ethics, technology, and public policy",
+        "details": [
+          "Selected as one of 25 fellows from more than 300 applicants for applied training in ethics, technology, and public policy.",
+          "Drafted research memos, policy briefs, and stakeholder materials translating technical risks into recommendations for responsible technology development."
+        ]
       },
       {
         "period": "October 2025 — June 2026",
         "role": "Analyst",
         "organization": "SENSA Consulting",
-        "detail": "Market research, product analysis, and impact evaluation"
+        "detail": "Market research, product analysis, and impact evaluation",
+        "details": [
+          "Conducted market research, product-development analysis, and impact evaluation for social-enterprise clients in education technology, sustainability, and disability access.",
+          "Synthesized findings into client-ready deliverables with prioritized recommendations supporting pricing and go-to-market decisions."
+        ]
       },
       {
         "period": "October 2025 — June 2026",
         "role": "Strategist",
         "organization": "REM & Company",
-        "detail": "Market, consumer, and competitive strategy"
+        "detail": "Market, consumer, and competitive strategy",
+        "details": [
+          "Conducted market, consumer-behavior, and competitive analyses for small businesses and nonprofits.",
+          "Translated findings into recommendations for messaging, digital marketing, and user experience."
+        ]
       },
       {
         "period": "January 2024 — August 2025",
         "role": "Operations Intern",
         "organization": "McDonogh School",
-        "detail": "Operations, budgeting, and data analysis"
+        "detail": "Operations, budgeting, and data analysis",
+        "details": [
+          "Supported cross-functional operations projects spanning facilities, budgeting, emergency planning, and transportation.",
+          "Built financial tracking models for deferred-maintenance spending, improving visibility into budgets, variance, and long-term capital needs.",
+          "Coordinated with transportation, facilities, and finance teams to implement operational improvements across departments."
+        ]
       }
     ],
     "footerLabel": "Get in touch",

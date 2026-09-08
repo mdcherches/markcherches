@@ -125,7 +125,7 @@ export async function toggleLensPanel(panel, trigger) {
         <div class="lens-actions"><button class="lens-primary" type="button" disabled>Start camera</button><button class="lens-stop" type="button" hidden>Stop camera</button><button class="lens-sound lens-stop" type="button" hidden>Enable sound</button></div>
         <p class="lens-status" role="status" aria-live="polite">Loading lens details…</p>
         <a class="lens-hosted" target="_blank" rel="noopener noreferrer">Open on Snapchat <span aria-hidden="true">↗</span></a>
-        <p class="lens-privacy">This site does not record your camera. Snap powers the effects and processes data under its <a href="https://values.snap.com/privacy/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</p>
+        <p class="lens-privacy">This site does not record your camera. Read the <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> for details about camera access and Snap’s processing.</p>
       </div>
       <div class="lens-viewfinder"><div class="lens-canvas"></div><div class="lens-placeholder"><span class="lens-focus-corners" aria-hidden="true"></span><span>Your camera goes here.</span><small>Ready when you are.</small></div></div>
     </div>`;

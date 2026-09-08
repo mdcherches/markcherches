@@ -1019,3 +1019,16 @@ img {
   .lens-project .project-row { grid-template-columns: minmax(0, 1fr); }
   .lens-try-button { grid-column: 1; }
 }
+
+/* Privacy page */
+.footer-privacy { display: inline-block; margin-left: 1rem; text-decoration: underline; text-underline-offset: 3px; }
+.privacy-header { grid-template-columns: 1fr auto; }
+.privacy-back { font: .72rem var(--mono); }
+.privacy-page { width: min(100%, 52rem); margin: 0 auto; padding: 3rem var(--page-pad) 5rem; }
+.privacy-date { margin-bottom: 1rem; font: .62rem var(--mono); color: var(--muted); letter-spacing: .04em; }
+.privacy-page .page-heading { font-size: clamp(2.5rem, 6vw, 4rem); }
+.privacy-page p:not(.privacy-date) { font-size: .9rem; line-height: 1.8; color: #45453f; }
+.privacy-page .privacy-lead { margin: 1.5rem 0 2.7rem; }
+.privacy-page h2 { margin: 2.4rem 0 .8rem; font-size: 1.1rem; font-weight: 500; letter-spacing: -.025em; }
+.privacy-page a { text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.privacy-page a:focus-visible, .footer-privacy:focus-visible { outline: 2px solid #375443; outline-offset: 3px; }

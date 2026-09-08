@@ -90,7 +90,21 @@ function aboutPage(data) {
 function projectsPage(data) {
   const items = (data.items || [])
     .map(
-      (project) => `
+      (project, index) => project.demo === "snapchat-lenses" ? `
+        <article class="lens-project">
+          <div class="project-row">
+            ${imageMarkup(project.image, "", "project-thumbnail")}
+            <div class="project-info">
+              <h2>${escapeHTML(project.title)}</h2>
+              <p>${escapeHTML(project.description)}</p>
+              <p class="project-meta">${escapeHTML(project.meta)}</p>
+            </div>
+            <button type="button" class="lens-try-button" data-lens-demo
+              aria-expanded="false" aria-controls="lens-panel-${index}">Try it live <span aria-hidden="true">↗</span></button>
+          </div>
+          <div id="lens-panel-${index}" class="lens-panel" hidden></div>
+        </article>
+      ` : `
         <a class="project-row" href="${safeURL(project.url)}"${externalAttributes(project.url)}>
           ${imageMarkup(project.image, "", "project-thumbnail")}
           <div class="project-info">
@@ -284,6 +298,7 @@ function renderRoute({ focus = false } = {}) {
     contact: () => contactPage(siteData.contact),
   };
 
+  window.dispatchEvent(new Event("portfolio:navigate"));
   contentRoot.innerHTML = renderers[route]();
   updateActiveNavigation(route);
   closeMenu();
@@ -317,7 +332,22 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenu();
 });
 
-contentRoot.addEventListener("click", (event) => {
+contentRoot.addEventListener("click", async (event) => {
+  const demoButton = event.target.closest("[data-lens-demo]");
+  if (demoButton) {
+    const panel = document.getElementById(demoButton.getAttribute("aria-controls"));
+    demoButton.disabled = true;
+    try {
+      const { toggleLensPanel } = await import("./lenses.js");
+      if (panel.isConnected) await toggleLensPanel(panel, demoButton);
+    } catch {
+      panel.hidden = false;
+      panel.textContent = "The live demo could not open. Please refresh and try again.";
+      demoButton.setAttribute("aria-expanded", "true");
+    } finally { demoButton.disabled = false; }
+    return;
+  }
+
   const button = event.target.closest(".experience-toggle");
   if (!button) return;
 

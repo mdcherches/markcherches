@@ -1,0 +1,12 @@
+{
+  "productionApiToken": "",
+  "lensGroupId": "eda93247-f391-4af0-bc01-546d39aa6189",
+  "lenses": [
+    {
+      "name": "Vine Trivia",
+      "description": "Finish the quote. How well do you remember Vine?",
+      "lensId": "",
+      "hostedUrl": "https://lens.snap.com/experience/a95642a2-f288-44cc-b35e-d5e01a8bac3d"
+    }
+  ]
+}

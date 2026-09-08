@@ -150,6 +150,10 @@ content:
               - name: url
                 label: Project link
                 type: string
+              - name: demo
+                label: Interactive demo
+                type: string
+                description: Use snapchat-lenses to show the live lens player.
           - name: footerLabel
             label: Footer link label
             type: string

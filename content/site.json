@@ -44,6 +44,14 @@
         "meta": "Published iOS App · Music Tracking · Last.fm",
         "image": "/assets/images/project-finance-placeholder.png",
         "url": "#projects"
+      },
+      {
+        "title": "Snapchat Lenses",
+        "description": "AR effects and interactive lenses I built for Snapchat. Try Vine Trivia, a game about finishing iconic Vine quotes.",
+        "meta": "Lens Studio · Augmented Reality · Interactive Games",
+        "image": "/assets/images/project-lenses.svg",
+        "url": "https://lens.snap.com/experience/a95642a2-f288-44cc-b35e-d5e01a8bac3d",
+        "demo": "snapchat-lenses"
       }
     ],
     "footerLabel": "View all on GitHub",

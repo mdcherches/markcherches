@@ -148,7 +148,7 @@ document.addEventListener('click', event => {
 });
 window.addEventListener('hashchange', () => navigateToHash({ focus: true }));
 
-fetch('content/site.json', { cache: 'no-cache' })
+fetch('content/site.json?v=20261014-square', { cache: 'no-cache' })
   .then(response => {
     if (!response.ok) throw new Error(`Content request failed: ${response.status}`);
     return response.json();

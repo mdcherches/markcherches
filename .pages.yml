@@ -205,7 +205,7 @@ content:
                 type: string
               - name: details
                 label: Expanded role details
-                description: Bullets appear automatically as visitors scroll to this role.
+                description: The entire role, including these bullets, appears together as visitors scroll.
                 type: text
                 list: true
 

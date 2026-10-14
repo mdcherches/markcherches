@@ -144,24 +144,25 @@ details li + li { margin-top: 8px; }
 .lens-try-button { color: var(--accent); border: 0; padding: 8px 0; font: 13px var(--sans); }
 .lens-try-button:hover { color: var(--accent); background: transparent; text-decoration: underline; }
 
-/* Bullets keep their space so revealing a role never moves the page beneath you. */
+/* Whole content blocks reveal without changing the document's layout. */
 .experience-role { padding: 26px 0; }
 .experience-role h3 { margin-top: 5px; }
 .role-bullets { margin: 16px 0 0; padding-left: 19px; color: var(--muted); font-size: 14px; line-height: 1.7; }
 .role-bullets li { padding-left: 3px; }
 .role-bullets li + li { margin-top: 9px; }
-.scroll-reveals .role-bullets li {
+.scroll-reveals .reveal-item {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(18px);
   transition: opacity 1100ms ease, transform 1200ms cubic-bezier(.22, 1, .36, 1);
 }
-.scroll-reveals .is-revealed .role-bullets li {
+.scroll-reveals .reveal-item.is-revealed,
+.scroll-reveals .reveal-item:focus-within {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: calc(var(--bullet-index, 0) * 140ms);
 }
-/* Keyboard focus and text selection should never be concealed by animation. */
-.experience-role:focus-within .role-bullets li { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .scroll-reveals .role-bullets li { opacity: 1; transform: none; transition: none; }
+  .scroll-reveals .reveal-item { opacity: 1; transform: none; transition: none; }
+}
+@media print {
+  .scroll-reveals .reveal-item { opacity: 1; transform: none; transition: none; }
 }

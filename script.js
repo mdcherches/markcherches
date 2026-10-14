@@ -33,7 +33,7 @@ function homeSection(data, socials) {
 }
 
 function sectionHeader(data) {
-  return `<h2>${escapeHTML(data.heading)}</h2>${data.intro ? `<p class="section-intro">${escapeHTML(data.intro)}</p>` : ''}`;
+  return `<div class="section-heading"><h2>${escapeHTML(data.heading)}</h2>${data.intro ? `<p class="section-intro">${escapeHTML(data.intro)}</p>` : ''}</div>`;
 }
 
 function workSection(data) {
@@ -67,7 +67,7 @@ function aboutSection(data) {
 function experienceSection(data) {
   return `<section class="content-section" id="experience" aria-label="Experience" tabindex="-1">${sectionHeader(data)}
     ${(data.items || []).map(entry => `<article class="work-row experience-role"><p class="work-context">${escapeHTML(entry.period)}</p><h3>${escapeHTML(entry.role)}</h3><p>${escapeHTML(entry.organization)}</p><p>${escapeHTML(entry.detail)}</p>
-      ${(entry.details || []).length ? `<ul class="role-bullets">${entry.details.map((detail, index) => `<li style="--bullet-index: ${index}">${escapeHTML(detail)}</li>`).join('')}</ul>` : ''}</article>`).join('')}</section>`;
+      ${(entry.details || []).length ? `<ul class="role-bullets">${entry.details.map(detail => `<li>${escapeHTML(detail)}</li>`).join('')}</ul>` : ''}</article>`).join('')}</section>`;
 }
 
 function researchSection(data) {
@@ -75,27 +75,35 @@ function researchSection(data) {
     ${(data.items || []).map(item => `<article class="work-row"><h3>${item.url && item.url !== '#research' ? linkMarkup(item.title, item.url) : escapeHTML(item.title)}</h3><p class="work-context">${escapeHTML([item.year, item.topic].filter(Boolean).join(' · '))}</p><p>${escapeHTML(item.description)}</p></article>`).join('')}</section>`;
 }
 
-function setupExperienceReveal() {
-  const roles = [...document.querySelectorAll('.experience-role')];
+function setupScrollReveal() {
+  // Animate coherent blocks, never individual bullet points or nested elements.
+  const items = [...document.querySelectorAll(
+    '.site-header, .home-section, #experience > .section-heading, .experience-role, ' +
+    '#work > .section-heading, #work .work-row, #projects > .section-heading, .project-entry, ' +
+    '.about-section, #research > .section-heading, #research .work-row, .site-footer'
+  )];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let frame = null;
+  items.forEach(item => item.classList.add('reveal-item'));
   function update() {
     frame = null;
     if (reducedMotion.matches) return;
-    const revealLine = window.innerHeight * 0.88;
-    for (const role of roles) {
-      const bullets = role.querySelector('.role-bullets');
-      role.classList.toggle('is-revealed', (bullets || role).getBoundingClientRect().top < revealLine);
+    const revealLine = window.innerHeight * 0.90;
+    for (const item of items) {
+      item.classList.toggle('is-revealed', item.getBoundingClientRect().top < revealLine);
     }
   }
   function schedule() {
     if (!reducedMotion.matches && frame === null) frame = requestAnimationFrame(update);
   }
   function configure() {
-    contentRoot.classList.toggle('scroll-reveals', !reducedMotion.matches);
+    document.body.classList.toggle('scroll-reveals', !reducedMotion.matches);
     if (reducedMotion.matches) {
-      roles.forEach(role => role.classList.add('is-revealed'));
-    } else update();
+      items.forEach(item => item.classList.add('is-revealed'));
+    } else {
+      // Paint the initial state before revealing the header and introduction.
+      requestAnimationFrame(() => requestAnimationFrame(schedule));
+    }
   }
   configure();
   window.addEventListener('scroll', schedule, { passive: true });
@@ -148,7 +156,7 @@ document.addEventListener('click', event => {
 });
 window.addEventListener('hashchange', () => navigateToHash({ focus: true }));
 
-fetch('content/site.json?v=20261014-square', { cache: 'no-cache' })
+fetch('content/site.json?v=20261014-blocks', { cache: 'no-cache' })
   .then(response => {
     if (!response.ok) throw new Error(`Content request failed: ${response.status}`);
     return response.json();
@@ -160,7 +168,7 @@ fetch('content/site.json?v=20261014-square', { cache: 'no-cache' })
       + (data.projects?.visible ? projectsSection(data.projects) : '')
       + aboutSection(data.about)
       + (data.research?.visible ? researchSection(data.research) : '');
-    setupExperienceReveal();
+    setupScrollReveal();
     document.title = data.meta.siteTitle;
     document.querySelector('meta[name="description"]').content = data.meta.description;
     document.querySelector('.monogram').textContent = data.meta.initials;

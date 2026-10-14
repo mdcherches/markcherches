@@ -1,6 +1,6 @@
 # markcherches.com
 
-A minimal, single-page portfolio with an original portrait, experience, a short about section, and contact links. Navigation scrolls within the page. Experience bullets reveal as visitors scroll and reverse when scrolling back past a role. Reduced-motion preferences show all bullets immediately. The optional Snapchat lens player and privacy page are preserved.
+A minimal, single-page portfolio with an original portrait, experience, a short about section, and contact links. Navigation scrolls within the page. The introduction, section headings, complete experience entries, about section, and footer reveal as visitors scroll and reverse when scrolling back past them. Reduced-motion preferences show all content immediately. The optional Snapchat lens player and privacy page are preserved.
 
 ## Edit text and photos without code
 

@@ -56,9 +56,11 @@
         "period": "August 2026 — Present",
         "role": "Applied AI Engineer",
         "organization": "Stealth startup",
-        "detail": "Startup out of the Stanford School of Medicine",
+        "detail": "ML inference pipelines and reproducible prediction workflows",
         "details": [
-          "Building applied AI for a healthcare startup."
+          "Developed and maintained Python-based ML inference pipelines to apply trained predictive models to new patient datasets, generating patient-level predictions across multiple model and threshold configurations.",
+          "Integrated serialized ML models and model libraries into reproducible prediction workflows, debugging dependencies, data transformations, and model-loading logic across a legacy research codebase.",
+          "Built and validated threshold-based classification workflows that mapped predictions to patient identifiers, enabling researchers to evaluate model performance and apply model outputs to newly completed patient data."
         ]
       },
       {

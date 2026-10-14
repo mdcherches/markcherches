@@ -35,3 +35,7 @@ Open `http://localhost:4173`. Check desktop and narrow mobile layouts, anchor na
 - `.pages.yml` — Pages CMS configuration
 - `lenses.js`, `content/lenses.json` — existing optional Snapchat demo
 - `assets/` — original images and lens resources
+
+## Search visibility
+
+Both public HTML pages contain a robots `noindex, nofollow` meta tag. Search engines that honor it should remove those pages after recrawling. Direct links still work. This is not access control and does not hide the public GitHub repository. Do not block these pages in robots.txt: crawlers need to read the noindex tag.

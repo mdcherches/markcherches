@@ -1,16 +1,16 @@
 # markcherches.com
 
-A minimal, single-page portfolio with an original portrait, selected work, projects, and contact links. Navigation scrolls within the page. The Snapchat lens player and privacy page are preserved.
+A minimal, single-page portfolio with an original portrait, experience, a short about section, and contact links. Navigation scrolls within the page. Experience bullets reveal as visitors scroll and reverse when scrolling back past a role. Reduced-motion preferences show all bullets immediately. The optional Snapchat lens player and privacy page are preserved.
 
 ## Edit text and photos without code
 
 1. Open [Pages CMS](https://app.pagescms.org) and sign in with GitHub.
 2. Choose **mdcherches/markcherches**, branch **main**, then **Portfolio content**.
-3. Edit **Introduction & portrait**, **Selected work**, **Selected projects**, **About section**, or **Contact footer**. **Introduction social links** controls the links below the introduction.
+3. Edit **Introduction & portrait**, **Experience**, **About section**, or **Contact footer**. **Introduction social links** controls the links below the introduction.
 4. Upload or replace the portrait in **Introduction & portrait → Portrait**. Add a short portrait description for accessibility.
 5. Save. Pages CMS commits to `main`; GitHub Pages publishes the update. Allow time for the deployment, then refresh the site.
 
-**Optional experience section** and **Optional research section** retain the previous background records. They are hidden by default to keep the homepage concise; enable **Show this section on the website** to display either below About. Review dates and claims before enabling older records. Projects without a public destination can leave **Project link** blank. The Snapchat entry's **Interactive demo** value stays `snapchat-lenses`.
+**Experience** is shown below the introduction. **Optional selected work**, **Optional projects**, and **Optional research section** are hidden; their records are preserved in the editor. Enable **Show this section on the website** if you want to restore them. Review dates and claims before enabling older records. Projects without a public destination can leave **Project link** blank. The Snapchat entry's **Interactive demo** value stays `snapchat-lenses`.
 
 All editable text lives in `content/site.json`; the editor fields are in `.pages.yml`. Uploaded images remain in `assets/images`. No new CMS account, database, or content migration is required for an existing Pages CMS connection.
 

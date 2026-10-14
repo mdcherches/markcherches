@@ -2,6 +2,11 @@ const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const config = JSON.parse(fs.readFileSync('content/lenses.json'));
+const portfolio = JSON.parse(fs.readFileSync('content/site.json'));
+if (!portfolio.projects?.visible) {
+ console.log('SKIP: optional projects and lens demo are hidden on the portfolio.');
+ process.exit(0);
+}
 const baseURL = process.env.LENS_TEST_URL || 'http://localhost:4174';
 fs.mkdirSync('.test-artifacts', { recursive: true });
 const sdk = `

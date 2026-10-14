@@ -74,9 +74,13 @@ content:
             type: string
 
       - name: work
-        label: Selected work
+        label: Optional selected work
         type: object
         fields:
+          - name: visible
+            label: Show this section on the website
+            type: boolean
+            default: false
           - name: heading
             label: Heading
             type: string
@@ -123,9 +127,13 @@ content:
             required: true
 
       - name: projects
-        label: Selected projects
+        label: Optional projects
         type: object
         fields:
+          - name: visible
+            label: Show this section on the website
+            type: boolean
+            default: false
           - name: heading
             label: Heading
             type: string
@@ -158,7 +166,7 @@ content:
                 description: Use snapchat-lenses to show the live lens player.
 
       - name: experience
-        label: Optional experience section
+        label: Experience
         type: object
         fields:
           - name: visible
@@ -197,7 +205,7 @@ content:
                 type: string
               - name: details
                 label: Expanded role details
-                description: Add the bullet points shown when a visitor opens this role.
+                description: Bullets appear automatically as visitors scroll to this role.
                 type: text
                 list: true
 

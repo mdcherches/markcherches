@@ -66,13 +66,40 @@ function aboutSection(data) {
 
 function experienceSection(data) {
   return `<section class="content-section" id="experience" aria-label="Experience" tabindex="-1">${sectionHeader(data)}
-    ${(data.items || []).map(entry => `<article class="work-row"><p class="work-context">${escapeHTML(entry.period)}</p><h3>${escapeHTML(entry.role)}</h3><p>${escapeHTML(entry.organization)}</p><p>${escapeHTML(entry.detail)}</p>
-      ${(entry.details || []).length ? `<details><summary>More about this role</summary><ul>${entry.details.map(detail => `<li>${escapeHTML(detail)}</li>`).join('')}</ul></details>` : ''}</article>`).join('')}</section>`;
+    ${(data.items || []).map(entry => `<article class="work-row experience-role"><p class="work-context">${escapeHTML(entry.period)}</p><h3>${escapeHTML(entry.role)}</h3><p>${escapeHTML(entry.organization)}</p><p>${escapeHTML(entry.detail)}</p>
+      ${(entry.details || []).length ? `<ul class="role-bullets">${entry.details.map((detail, index) => `<li style="--bullet-index: ${index}">${escapeHTML(detail)}</li>`).join('')}</ul>` : ''}</article>`).join('')}</section>`;
 }
 
 function researchSection(data) {
   return `<section class="content-section" id="research" aria-label="Research" tabindex="-1">${sectionHeader(data)}
     ${(data.items || []).map(item => `<article class="work-row"><h3>${item.url && item.url !== '#research' ? linkMarkup(item.title, item.url) : escapeHTML(item.title)}</h3><p class="work-context">${escapeHTML([item.year, item.topic].filter(Boolean).join(' · '))}</p><p>${escapeHTML(item.description)}</p></article>`).join('')}</section>`;
+}
+
+function setupExperienceReveal() {
+  const roles = [...document.querySelectorAll('.experience-role')];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let frame = null;
+  function update() {
+    frame = null;
+    if (reducedMotion.matches) return;
+    const revealLine = window.innerHeight * 0.82;
+    for (const role of roles) {
+      role.classList.toggle('is-revealed', role.getBoundingClientRect().top < revealLine);
+    }
+  }
+  function schedule() {
+    if (!reducedMotion.matches && frame === null) frame = requestAnimationFrame(update);
+  }
+  function configure() {
+    contentRoot.classList.toggle('scroll-reveals', !reducedMotion.matches);
+    if (reducedMotion.matches) {
+      roles.forEach(role => role.classList.add('is-revealed'));
+    } else update();
+  }
+  configure();
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  reducedMotion.addEventListener('change', configure);
 }
 
 function stopDemo() {
@@ -81,7 +108,7 @@ function stopDemo() {
 
 function resolveSection(hash) {
   const id = hash.replace(/^#/, '') || 'home';
-  const aliases = { experience: 'work', research: 'work' };
+  const aliases = { work: 'experience', projects: 'experience', research: 'experience' };
   return document.getElementById(id) || document.getElementById(aliases[id] || 'home');
 }
 
@@ -126,9 +153,13 @@ fetch('content/site.json', { cache: 'no-cache' })
     return response.json();
   })
   .then(data => {
-    contentRoot.innerHTML = homeSection(data.home, data.socials || []) + workSection(data.work || { heading: 'Work', items: [] }) + projectsSection(data.projects) + aboutSection(data.about)
-      + (data.experience?.visible ? experienceSection(data.experience) : '')
+    contentRoot.innerHTML = homeSection(data.home, data.socials || [])
+      + (data.experience?.visible !== false ? experienceSection(data.experience) : '')
+      + (data.work?.visible ? workSection(data.work) : '')
+      + (data.projects?.visible ? projectsSection(data.projects) : '')
+      + aboutSection(data.about)
       + (data.research?.visible ? researchSection(data.research) : '');
+    setupExperienceReveal();
     document.title = data.meta.siteTitle;
     document.querySelector('meta[name="description"]').content = data.meta.description;
     document.querySelector('.monogram').textContent = data.meta.initials;
@@ -138,7 +169,7 @@ fetch('content/site.json', { cache: 'no-cache' })
     document.querySelector('#contact-links').innerHTML = `<p class="contact-heading">${escapeHTML(data.contact.heading)}</p>${data.contact.intro ? `<p>${escapeHTML(data.contact.intro)}</p>` : ''}${(data.contact.items || []).map(item => linkMarkup(item.label, item.url, 'contact-link')).join('')}`;
     if (window.location.hash) requestAnimationFrame(() => navigateToHash({ initial: true }));
     // Release any camera session when visitors scroll away from the demo, too.
-    if ('IntersectionObserver' in window) {
+    if ('IntersectionObserver' in window && document.getElementById('projects')) {
       const observer = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) stopDemo();
       });

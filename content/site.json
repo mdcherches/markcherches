@@ -46,7 +46,8 @@
       }
     ],
     "footerLabel": "View all on GitHub",
-    "footerUrl": "https://github.com/mdcherches"
+    "footerUrl": "https://github.com/mdcherches",
+    "visible": false
   },
   "experience": {
     "heading": "Experience",
@@ -64,7 +65,7 @@
         ]
       },
       {
-        "period": "June 2026 — Present",
+        "period": "June 2026 — September 2026",
         "role": "AI Policy Researcher",
         "organization": "PIT Policy Lab",
         "detail": "AI adoption across Mexico’s manufacturing, finance, and healthcare sectors",
@@ -179,6 +180,7 @@
         "context": "Research",
         "description": "Exploring how machine learning can support real-world health applications."
       }
-    ]
+    ],
+    "visible": false
   }
 }

@@ -53,6 +53,15 @@
     "intro": "Where I’ve worked and learned.",
     "items": [
       {
+        "period": "August 2026 — Present",
+        "role": "Applied AI Engineer",
+        "organization": "Stealth startup",
+        "detail": "Startup out of the Stanford School of Medicine",
+        "details": [
+          "Building applied AI for a healthcare startup."
+        ]
+      },
+      {
         "period": "June 2026 — Present",
         "role": "AI Policy Researcher",
         "organization": "PIT Policy Lab",

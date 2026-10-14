@@ -36,12 +36,12 @@ h3 { font-size: 16px; line-height: 1.5; font-weight: 500; letter-spacing: -.02em
 .monogram { font-size: 16px; color: var(--ink); letter-spacing: -.055em; }
 .desktop-nav { display: flex; gap: 28px; font-size: 13px; }
 .desktop-nav a { color: var(--muted); padding: 12px 0; }
-.home-section { display: grid; grid-template-columns: minmax(0, 1fr) 202px; gap: 42px; padding: 38px 0 54px; align-items: start; }
+.home-section { display: grid; grid-template-columns: minmax(0, 1fr) 242px; gap: 42px; padding: 38px 0 54px; align-items: start; }
 .home-section.without-portrait { grid-template-columns: 1fr; }
 .home-eyebrow { font-size: 17px; color: var(--muted); margin-top: 8px; letter-spacing: -.015em; }
 .home-intro { margin-top: 27px; font-size: 16px; color: #4b514b; }
 .home-intro p + p { margin-top: 20px; }
-.home-portrait { width: 202px; height: 252px; object-fit: cover; object-position: 50% 40%; border-radius: 4px; }
+.home-portrait { width: 242px; height: 242px; aspect-ratio: 1; object-fit: cover; object-position: 50% 40%; border-radius: 4px; }
 .social-links { display: flex; flex-wrap: wrap; column-gap: 24px; row-gap: 10px; margin-top: 26px; font-size: 14px; }
 .link-arrow { display: inline-block; margin-left: 7px; font-size: .95em; font-weight: 400; }
 .content-section { padding: 34px 0; border-top: 1px solid var(--line); }
@@ -83,7 +83,7 @@ details li + li { margin-top: 8px; }
   .site-header { min-height: 86px; }
   .desktop-nav { gap: 20px; font-size: 12px; }
   .home-section { display: flex; flex-direction: column; padding: 20px 0 36px; gap: 24px; }
-  .home-portrait { order: -1; width: 116px; height: 138px; }
+  .home-portrait { order: -1; width: 152px; height: 152px; }
   .home-eyebrow { font-size: 15px; }
   .home-intro { font-size: 15px; margin-top: 22px; }
   .content-section { padding: 28px 0; }
@@ -153,12 +153,12 @@ details li + li { margin-top: 8px; }
 .scroll-reveals .role-bullets li {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 450ms ease, transform 600ms cubic-bezier(.22, 1, .36, 1);
+  transition: opacity 1100ms ease, transform 1200ms cubic-bezier(.22, 1, .36, 1);
 }
 .scroll-reveals .is-revealed .role-bullets li {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: calc(var(--bullet-index, 0) * 65ms);
+  transition-delay: calc(var(--bullet-index, 0) * 140ms);
 }
 /* Keyboard focus and text selection should never be concealed by animation. */
 .experience-role:focus-within .role-bullets li { opacity: 1; transform: none; }

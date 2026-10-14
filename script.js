@@ -82,9 +82,10 @@ function setupExperienceReveal() {
   function update() {
     frame = null;
     if (reducedMotion.matches) return;
-    const revealLine = window.innerHeight * 0.82;
+    const revealLine = window.innerHeight * 0.88;
     for (const role of roles) {
-      role.classList.toggle('is-revealed', role.getBoundingClientRect().top < revealLine);
+      const bullets = role.querySelector('.role-bullets');
+      role.classList.toggle('is-revealed', (bullets || role).getBoundingClientRect().top < revealLine);
     }
   }
   function schedule() {

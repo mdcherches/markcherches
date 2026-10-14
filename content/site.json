@@ -107,7 +107,7 @@
     ],
     "footerLabel": "Get in touch",
     "footerUrl": "#contact",
-    "visible": false
+    "visible": true
   },
   "research": {
     "heading": "Research",

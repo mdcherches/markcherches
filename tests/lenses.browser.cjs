@@ -23,7 +23,7 @@ export async function bootstrapCameraKit(){return {
   let sdkRequests=0;page.on('request',r=>{if(r.url().endsWith('/assets/lenses/camera-kit.js'))sdkRequests++});
   await page.goto(baseURL + '/#projects');
   await page.getByRole('button',{name:'Try it live'}).waitFor();
-  assert.equal(await page.locator('.project-list h2').count(),3);
+  assert.equal(await page.locator('.project-list h3').count(),3);
   await page.screenshot({path:'.test-artifacts/projects-desktop.png',fullPage:true});
   await page.getByRole('button',{name:'Try it live'}).click();
   await page.getByText('Play in your browser on Snapchat’s website. No app download needed.').waitFor();
@@ -67,7 +67,8 @@ export async function bootstrapCameraKit(){return {
   await page.getByRole('button',{name:'Start camera',exact:true}).click();
   await page.getByText('Vine Trivia is ready.',{exact:false}).waitFor();
   await page.evaluate(()=>{location.hash='#about'});
-  await page.waitForFunction(()=>document.title.startsWith('About'));
+  await page.waitForFunction(()=>location.hash === '#about');
+  assert.equal(await page.getByRole('heading',{name:'Mark Cherches',exact:true}).count(),1);
   assert.equal(await page.evaluate(()=>window.__streams.every(s=>s.getTracks().every(t=>t.readyState==='ended'))),true);
   console.log('PASS: start, stop, restart, navigation release camera tracks');
 

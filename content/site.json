@@ -1,7 +1,7 @@
 {
   "meta": {
     "siteTitle": "Mark Cherches",
-    "description": "Mark Cherches — Stanford computer science student working across AI, policy, and applied research.",
+    "description": "Mark Cherches — Stanford student building products and exploring applied AI and technology adoption.",
     "initials": "MC",
     "ownerName": "Mark Cherches",
     "year": "2026"
@@ -9,18 +9,18 @@
   "home": {
     "firstName": "Mark",
     "lastName": "Cherches",
-    "eyebrow": "AI @ Stanford",
-    "summary": "Researcher and builder working across AI policy, applied research, and data-driven tools for real-world decisions.",
+    "eyebrow": "Stanford · Building & applied AI",
+    "summary": "I'm a Stanford student interested in building useful products and understanding how people adopt new technology.",
     "ctaLabel": "Explore",
     "ctaTarget": "#about",
     "image": "/assets/images/markheadshotnew.png",
-    "imageAlt": "Portrait of Mark Cherches at Stanford"
+    "imageAlt": "Portrait of Mark Cherches at Stanford",
+    "current": "Currently, I'm building at a stealth startup. My work also spans applied AI in healthcare and research on AI adoption in Mexico."
   },
   "about": {
-    "heading": "About",
+    "heading": "A little more",
     "paragraphs": [
-      "I’m a computer science student at Stanford University concentrating in artificial intelligence. I’m interested in how AI systems move from technical capability to useful, responsible adoption.",
-      "My work spans AI policy research, social-impact consulting, and applied data tools — from studying adoption barriers across Mexico’s key industries to improving school transportation and financial planning."
+      "I'm drawn to work that connects technical building with product decisions and an understanding of people."
     ],
     "image": "/assets/images/stanfordpalmdrive2sjb-1.jpeg",
     "imageAlt": "Palm Drive at Stanford University",
@@ -28,30 +28,30 @@
     "contactUrl": "#contact"
   },
   "projects": {
-    "heading": "Projects",
-    "intro": "A few things I’ve built.",
+    "heading": "Selected projects",
+    "intro": "",
     "items": [
       {
-        "title": "Instagram Feed Planner",
-        "description": "An open-source, local-first tool for importing a public Instagram profile, rearranging its grid, and planning future posts without publishing anything.",
-        "meta": "Open Source · Next.js · TypeScript · Local-first",
-        "image": "/assets/images/project-transportation-placeholder.png",
-        "url": "https://github.com/mdcherches/ig-feed-planner"
-      },
-      {
         "title": "Vinyl Scrobbler",
-        "description": "An iOS app for automatically scrobbling records played on a turntable to a listener’s Last.fm profile.",
+        "description": "An iOS app connecting vinyl listening with Last.fm.",
         "meta": "Published iOS App · Music Tracking · Last.fm",
         "image": "/assets/images/project-finance-placeholder.png",
-        "url": "#projects"
+        "url": ""
       },
       {
         "title": "Snapchat Lenses",
-        "description": "AR effects and interactive lenses I built for Snapchat. Try Vine Trivia, a game about finishing iconic Vine quotes.",
+        "description": "Interactive AR experiences, including Vine Trivia.",
         "meta": "Lens Studio · Augmented Reality · Interactive Games",
         "image": "/assets/images/project-lenses.svg",
         "url": "https://lens.snap.com/experience/a95642a2-f288-44cc-b35e-d5e01a8bac3d",
         "demo": "snapchat-lenses"
+      },
+      {
+        "title": "Instagram Feed Planner",
+        "description": "A tool for arranging and planning an Instagram grid.",
+        "meta": "Open Source · Next.js · TypeScript · Local-first",
+        "image": "/assets/images/project-transportation-placeholder.png",
+        "url": ""
       }
     ],
     "footerLabel": "View all on GitHub",
@@ -115,7 +115,8 @@
       }
     ],
     "footerLabel": "Get in touch",
-    "footerUrl": "#contact"
+    "footerUrl": "#contact",
+    "visible": false
   },
   "research": {
     "heading": "Research",
@@ -128,33 +129,24 @@
         "description": "A nine-week study of implementation barriers across manufacturing, finance, and healthcare, informed by 20+ stakeholder interviews and market analysis.",
         "url": "#research"
       }
-    ]
+    ],
+    "visible": false
   },
   "contact": {
-    "heading": "Contact",
+    "heading": "Get in touch",
     "items": [
       {
         "icon": "email",
         "label": "cherches@stanford.edu",
         "url": "mailto:cherches@stanford.edu"
-      },
-      {
-        "icon": "linkedin",
-        "label": "linkedin.com/in/mark-cherches",
-        "url": "https://www.linkedin.com/in/mark-cherches/"
-      },
-      {
-        "icon": "github",
-        "label": "github.com/mdcherches",
-        "url": "https://github.com/mdcherches"
       }
     ]
   },
   "socials": [
     {
-      "icon": "github",
-      "label": "GitHub",
-      "url": "https://github.com/mdcherches"
+      "icon": "email",
+      "label": "Email",
+      "url": "mailto:cherches@stanford.edu"
     },
     {
       "icon": "linkedin",
@@ -162,9 +154,33 @@
       "url": "https://www.linkedin.com/in/mark-cherches/"
     },
     {
-      "icon": "email",
-      "label": "Email",
-      "url": "mailto:cherches@stanford.edu"
+      "icon": "github",
+      "label": "GitHub",
+      "url": "https://github.com/mdcherches"
     }
-  ]
+  ],
+  "work": {
+    "heading": "Selected work",
+    "intro": "",
+    "items": [
+      {
+        "title": "Stealth startup",
+        "context": "Building",
+        "description": "Technical work on an early-stage product.",
+        "url": ""
+      },
+      {
+        "title": "AI adoption in Mexico",
+        "context": "PIT Policy Lab",
+        "description": "Research into the barriers between AI capabilities and organizational adoption.",
+        "url": ""
+      },
+      {
+        "title": "Applied AI in healthcare",
+        "context": "Research",
+        "description": "Exploring how machine learning can support real-world health applications.",
+        "url": ""
+      }
+    ]
+  }
 }

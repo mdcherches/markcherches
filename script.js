@@ -1,389 +1,151 @@
-const contentRoot = document.querySelector("#content");
-const menuToggle = document.querySelector(".menu-toggle");
-const menuPanel = document.querySelector("#menu-panel");
+const contentRoot = document.querySelector('#content');
 
-const routes = ["home", "about", "experience", "projects", "research", "contact"];
-let siteData = null;
-
-const icons = {
-  github:
-    '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.7c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"/><path d="M8 19c-3 .9-3-1.5-4.2-2"/>',
-  linkedin:
-    '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v6M8 7.5v.01M12 17v-6M12 14a3 3 0 0 1 6 0v3"/>',
-  email:
-    '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
-  link: '<path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.2 1.2"/><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.2-1.2"/>',
-};
-
-function escapeHTML(value = "") {
-  const element = document.createElement("div");
-  element.textContent = value;
+function escapeHTML(value = '') {
+  const element = document.createElement('div');
+  element.textContent = value ?? '';
   return element.innerHTML;
 }
 
-function safeURL(value = "#") {
+function safeURL(value = '') {
   const url = String(value).trim();
-  if (
-    url.startsWith("/") ||
-    url.startsWith("#") ||
-    url.startsWith("mailto:") ||
-    url.startsWith("https://") ||
-    url.startsWith("http://")
-  ) {
-    return escapeHTML(url);
-  }
-  return "#";
+  if (/^(https?:\/\/|mailto:|#|\/(?!\/))/.test(url)) return escapeHTML(url);
+  return '';
 }
 
-function icon(name) {
-  return `<svg viewBox="0 0 24 24" aria-hidden="true">${icons[name] || icons.link}</svg>`;
+function linkMarkup(label, url, className = '') {
+  const href = safeURL(url);
+  if (!href) return escapeHTML(label);
+  const external = /^https?:\/\//.test(url) ? ' target="_blank" rel="noopener noreferrer"' : '';
+  return `<a class="${className}" href="${href}"${external}>${escapeHTML(label)}<span class="link-arrow" aria-hidden="true">↗</span></a>`;
 }
 
-function imageMarkup(src, alt, className) {
-  const path = src || "/assets/images/portrait-placeholder.png";
-  return `
-    <div class="media-frame ${className}">
-      <img src="${safeURL(path)}" alt="${escapeHTML(alt || "")}">
+function homeSection(data, socials) {
+  const image = safeURL(data.image);
+  return `<section class="home-section ${image ? '' : 'without-portrait'}" id="home" aria-labelledby="home-title" tabindex="-1">
+    <div class="home-copy">
+      <h1 id="home-title">${escapeHTML(data.firstName)} ${escapeHTML(data.lastName)}</h1>
+      <p class="home-eyebrow">${escapeHTML(data.eyebrow)}</p>
+      <div class="home-intro"><p>${escapeHTML(data.summary)}</p>${data.current ? `<p>${escapeHTML(data.current)}</p>` : ''}</div>
+      <div class="social-links" aria-label="Social links">${socials.map(item => linkMarkup(item.label, item.url)).join('')}</div>
     </div>
-  `;
+    ${image ? `<img class="home-portrait" src="${image}" alt="${escapeHTML(data.imageAlt)}" width="1254" height="1254" fetchpriority="high" decoding="async">` : ''}
+  </section>`;
 }
 
-function externalAttributes(url) {
-  return /^https?:\/\//.test(url || "") ? ' target="_blank" rel="noreferrer"' : "";
+function sectionHeader(data) {
+  return `<h2>${escapeHTML(data.heading)}</h2>${data.intro ? `<p class="section-intro">${escapeHTML(data.intro)}</p>` : ''}`;
 }
 
-function homePage(data) {
-  return `
-    <section class="page page-home" aria-labelledby="home-title">
-      <div class="home-copy">
-        <h1 class="home-name" id="home-title">
-          ${escapeHTML(data.firstName)}<br>${escapeHTML(data.lastName)}
-        </h1>
-        <p class="home-eyebrow">${escapeHTML(data.eyebrow)}</p>
-        <p class="home-summary mono-copy">${escapeHTML(data.summary)}</p>
-        <a class="inline-link" href="${safeURL(data.ctaTarget || "#about")}">${escapeHTML(data.ctaLabel)}</a>
-      </div>
-      ${imageMarkup(data.image, data.imageAlt, "home-portrait")}
-    </section>
-  `;
+function workSection(data) {
+  return `<section class="content-section" id="work" aria-label="Work" tabindex="-1">${sectionHeader(data)}
+    <div class="work-list">${(data.items || []).map(item => `<article class="work-row">
+      <h3>${item.url ? linkMarkup(item.title, item.url) : escapeHTML(item.title)}</h3>
+      ${item.context ? `<p class="work-context">${escapeHTML(item.context)}</p>` : ''}
+      <p>${escapeHTML(item.description)}</p>
+    </article>`).join('')}</div></section>`;
 }
 
-function aboutPage(data) {
-  const paragraphs = (data.paragraphs || [])
-    .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
-    .join("");
-
-  return `
-    <section class="page page-about" aria-labelledby="about-title">
-      <div class="about-copy">
-        <h1 class="page-heading" id="about-title">${escapeHTML(data.heading)}</h1>
-        <div class="about-paragraphs mono-copy">${paragraphs}</div>
-        <a class="inline-link about-contact-link" href="${safeURL(data.contactUrl || "#contact")}"${externalAttributes(data.contactUrl)}>
-          ${escapeHTML(data.contactLabel || "Contact me")}
-        </a>
-      </div>
-      ${imageMarkup(data.image, data.imageAlt, "about-image")}
-    </section>
-  `;
+function projectsSection(data) {
+  return `<section class="content-section" id="projects" aria-label="Projects" tabindex="-1">${sectionHeader(data)}
+    <div class="project-list">${(data.items || []).map((project, index) => {
+      // Self-links used by the old site aren't useful project destinations.
+      const hasLink = project.url && !['#', '#projects'].includes(project.url);
+      const title = hasLink && !project.demo ? linkMarkup(project.title, project.url, 'project-title-link') : escapeHTML(project.title);
+      return `<article class="project-entry">
+        <div class="project-row"><div class="project-info"><h3>${title}</h3><p>${escapeHTML(project.description)}</p></div>
+        ${project.demo === 'snapchat-lenses' ? `<button type="button" class="lens-try-button" data-lens-demo aria-expanded="false" aria-controls="lens-panel-${index}">Try it live <span aria-hidden="true">↗</span></button>` : ''}</div>
+        ${project.demo === 'snapchat-lenses' ? `<div class="lens-panel" id="lens-panel-${index}" hidden></div>` : ''}
+      </article>`;
+    }).join('')}</div></section>`;
 }
 
-function projectsPage(data) {
-  const items = (data.items || [])
-    .map(
-      (project, index) => project.demo === "snapchat-lenses" ? `
-        <article class="lens-project">
-          <div class="project-row">
-            ${imageMarkup(project.image, "", "project-thumbnail")}
-            <div class="project-info">
-              <h2>${escapeHTML(project.title)}</h2>
-              <p>${escapeHTML(project.description)}</p>
-              <p class="project-meta">${escapeHTML(project.meta)}</p>
-            </div>
-            <button type="button" class="lens-try-button" data-lens-demo
-              aria-expanded="false" aria-controls="lens-panel-${index}">Try it live <span aria-hidden="true">↗</span></button>
-          </div>
-          <div id="lens-panel-${index}" class="lens-panel" hidden></div>
-        </article>
-      ` : `
-        <a class="project-row" href="${safeURL(project.url)}"${externalAttributes(project.url)}>
-          ${imageMarkup(project.image, "", "project-thumbnail")}
-          <div class="project-info">
-            <h2>${escapeHTML(project.title)}</h2>
-            <p>${escapeHTML(project.description)}</p>
-            <p class="project-meta">${escapeHTML(project.meta)}</p>
-          </div>
-          <span class="external-arrow" aria-hidden="true">→</span>
-        </a>
-      `
-    )
-    .join("");
-
-  return `
-    <section class="page page-list" aria-labelledby="projects-title">
-      <header class="section-header">
-        <h1 class="page-heading" id="projects-title">${escapeHTML(data.heading)}</h1>
-        <p class="section-intro">${escapeHTML(data.intro)}</p>
-      </header>
-      <div class="project-list">${items}</div>
-      <a class="inline-link list-footer-link" href="${safeURL(data.footerUrl)}"${externalAttributes(data.footerUrl)}>
-        ${escapeHTML(data.footerLabel)}
-      </a>
-    </section>
-  `;
+function aboutSection(data) {
+  return `<section class="content-section about-section" id="about" aria-label="About" tabindex="-1">${sectionHeader(data)}
+    <div class="about-paragraphs">${(data.paragraphs || []).map(p => `<p>${escapeHTML(p)}</p>`).join('')}</div></section>`;
 }
 
-function experiencePage(data) {
-  const items = (data.items || [])
-    .map(
-      (entry, index) => {
-        const detailsId = `experience-details-${index}`;
-        const roleLabel = `${entry.role} at ${entry.organization}`;
-        const roleDetails = entry.details || [];
-        const details = roleDetails
-          .map((detail) => `<li>${escapeHTML(detail)}</li>`)
-          .join("");
-        const disclosure = roleDetails.length
-          ? `
-          <button
-            class="experience-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls="${detailsId}"
-            aria-label="View details for ${escapeHTML(roleLabel)}"
-            data-open-label="View details for ${escapeHTML(roleLabel)}"
-            data-close-label="Hide details for ${escapeHTML(roleLabel)}"
-          >
-            <span class="experience-toggle-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="experience-panel" id="${detailsId}" aria-hidden="true">
-            <div class="experience-panel-inner">
-              <ul>${details}</ul>
-            </div>
-          </div>
-        `
-          : "";
-
-        return `
-        <article class="experience-row">
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <p class="experience-period">${escapeHTML(entry.period)}</p>
-          <div class="experience-main">
-            <h2>${escapeHTML(entry.role)}</h2>
-            <p>${escapeHTML(entry.organization)}</p>
-            <p class="experience-detail">${escapeHTML(entry.detail)}</p>
-          </div>
-          ${disclosure}
-        </article>
-      `
-      }
-    )
-    .join("");
-
-  return `
-    <section class="page page-list" aria-labelledby="experience-title">
-      <header class="section-header">
-        <h1 class="page-heading" id="experience-title">${escapeHTML(data.heading)}</h1>
-        <p class="section-intro">${escapeHTML(data.intro)}</p>
-      </header>
-      <div class="experience-timeline">${items}</div>
-      <a class="inline-link list-footer-link" href="${safeURL(data.footerUrl)}"${externalAttributes(data.footerUrl)}>
-        ${escapeHTML(data.footerLabel)}
-      </a>
-    </section>
-  `;
+function experienceSection(data) {
+  return `<section class="content-section" id="experience" aria-label="Experience" tabindex="-1">${sectionHeader(data)}
+    ${(data.items || []).map(entry => `<article class="work-row"><p class="work-context">${escapeHTML(entry.period)}</p><h3>${escapeHTML(entry.role)}</h3><p>${escapeHTML(entry.organization)}</p><p>${escapeHTML(entry.detail)}</p>
+      ${(entry.details || []).length ? `<details><summary>More about this role</summary><ul>${entry.details.map(detail => `<li>${escapeHTML(detail)}</li>`).join('')}</ul></details>` : ''}</article>`).join('')}</section>`;
 }
 
-function researchPage(data) {
-  const items = (data.items || [])
-    .map(
-      (item) => `
-        <a class="research-row" href="${safeURL(item.url)}"${externalAttributes(item.url)}>
-          <span class="research-year">${escapeHTML(item.year)}</span>
-          <div class="research-info">
-            <h2>${escapeHTML(item.title)}</h2>
-            <p class="research-meta">${escapeHTML(item.topic)}</p>
-          </div>
-          <p class="research-publication">${escapeHTML(item.description)}</p>
-          <span class="external-arrow" aria-hidden="true">→</span>
-        </a>
-      `
-    )
-    .join("");
-
-  return `
-    <section class="page page-list" aria-labelledby="research-title">
-      <header class="section-header">
-        <h1 class="page-heading" id="research-title">${escapeHTML(data.heading)}</h1>
-        <p class="section-intro">${escapeHTML(data.intro)}</p>
-      </header>
-      <div class="research-list">${items}</div>
-    </section>
-  `;
+function researchSection(data) {
+  return `<section class="content-section" id="research" aria-label="Research" tabindex="-1">${sectionHeader(data)}
+    ${(data.items || []).map(item => `<article class="work-row"><h3>${item.url && item.url !== '#research' ? linkMarkup(item.title, item.url) : escapeHTML(item.title)}</h3><p class="work-context">${escapeHTML([item.year, item.topic].filter(Boolean).join(' · '))}</p><p>${escapeHTML(item.description)}</p></article>`).join('')}</section>`;
 }
 
-function contactPage(data) {
-  const items = (data.items || [])
-    .map(
-      (item) => `
-        <a class="contact-link" href="${safeURL(item.url)}"${externalAttributes(item.url)}>
-          ${icon(item.icon)}
-          <span>${escapeHTML(item.label)}</span>
-          <span class="external-arrow" aria-hidden="true">→</span>
-        </a>
-      `
-    )
-    .join("");
-
-  return `
-    <section class="page page-contact" aria-labelledby="contact-title">
-      <div class="contact-content">
-        <h1 class="page-heading" id="contact-title">${escapeHTML(data.heading)}</h1>
-        <p class="section-intro">${escapeHTML(data.intro)}</p>
-        <div class="contact-links">${items}</div>
-      </div>
-      <div class="topography" aria-hidden="true"></div>
-    </section>
-  `;
+function stopDemo() {
+  window.dispatchEvent(new Event('portfolio:navigate'));
 }
 
-function renderSocials(socials = []) {
-  const root = document.querySelector("#social-links");
-  root.innerHTML = socials
-    .map(
-      (item) => `
-        <a
-          class="social-link"
-          href="${safeURL(item.url)}"
-          aria-label="${escapeHTML(item.label)}"
-          ${externalAttributes(item.url)}
-        >
-          ${icon(item.icon)}
-        </a>
-      `
-    )
-    .join("");
+function resolveSection(hash) {
+  const id = hash.replace(/^#/, '') || 'home';
+  const aliases = { experience: 'work', research: 'work' };
+  return document.getElementById(id) || document.getElementById(aliases[id] || 'home');
 }
 
-function currentRoute() {
-  const hash = window.location.hash.slice(1).toLowerCase();
-  return routes.includes(hash) ? hash : "home";
+function navigateToHash({ focus = false, initial = false } = {}) {
+  stopDemo();
+  const section = resolveSection(window.location.hash);
+  if (!section) return;
+  if (focus) section.focus({ preventScroll: true });
+  section.scrollIntoView({ behavior: initial ? 'instant' : 'auto', block: 'start' });
 }
 
-function updateActiveNavigation(route) {
-  document.querySelectorAll("[data-route-link]").forEach((link) => {
-    if (link.dataset.routeLink === route) {
-      link.setAttribute("aria-current", "page");
-    } else {
-      link.removeAttribute("aria-current");
-    }
-  });
-}
-
-function closeMenu() {
-  menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-label", "Open navigation menu");
-  menuPanel.hidden = true;
-}
-
-function renderRoute({ focus = false } = {}) {
-  if (!siteData) return;
-
-  const route = currentRoute();
-  const renderers = {
-    home: () => homePage(siteData.home),
-    about: () => aboutPage(siteData.about),
-    projects: () => projectsPage(siteData.projects),
-    experience: () => experiencePage(siteData.experience),
-    research: () => researchPage(siteData.research),
-    contact: () => contactPage(siteData.contact),
-  };
-
-  window.dispatchEvent(new Event("portfolio:navigate"));
-  contentRoot.innerHTML = renderers[route]();
-  updateActiveNavigation(route);
-  closeMenu();
-  document.title = route === "home"
-    ? siteData.meta.siteTitle
-    : `${siteData[route].heading} — ${siteData.meta.siteTitle}`;
-
-  if (focus) {
-    contentRoot.focus({ preventScroll: true });
-  }
-}
-
-menuToggle.addEventListener("click", () => {
-  const open = menuToggle.getAttribute("aria-expanded") === "true";
-  menuToggle.setAttribute("aria-expanded", String(!open));
-  menuToggle.setAttribute("aria-label", open ? "Open navigation menu" : "Close navigation menu");
-  menuPanel.hidden = open;
-});
-
-document.addEventListener("click", (event) => {
-  if (
-    !menuPanel.hidden &&
-    !menuPanel.contains(event.target) &&
-    !menuToggle.contains(event.target)
-  ) {
-    closeMenu();
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeMenu();
-});
-
-contentRoot.addEventListener("click", async (event) => {
-  const demoButton = event.target.closest("[data-lens-demo]");
-  if (demoButton) {
-    const panel = document.getElementById(demoButton.getAttribute("aria-controls"));
-    demoButton.disabled = true;
-    try {
-      const { toggleLensPanel } = await import("./lenses.js");
-      if (panel.isConnected) await toggleLensPanel(panel, demoButton);
-    } catch {
-      panel.hidden = false;
-      panel.textContent = "The live demo could not open. Please refresh and try again.";
-      demoButton.setAttribute("aria-expanded", "true");
-    } finally { demoButton.disabled = false; }
-    return;
-  }
-
-  const button = event.target.closest(".experience-toggle");
+contentRoot.addEventListener('click', async event => {
+  const button = event.target.closest('[data-lens-demo]');
   if (!button) return;
-
-  const panel = document.getElementById(button.getAttribute("aria-controls"));
-  if (!panel) return;
-
-  const isOpen = button.getAttribute("aria-expanded") === "true";
-  button.setAttribute("aria-expanded", String(!isOpen));
-  button.setAttribute(
-    "aria-label",
-    isOpen ? button.dataset.openLabel : button.dataset.closeLabel
-  );
-  panel.setAttribute("aria-hidden", String(isOpen));
+  const panel = document.getElementById(button.getAttribute('aria-controls'));
+  button.disabled = true;
+  try {
+    const { toggleLensPanel } = await import('./lenses.js');
+    if (panel.isConnected) await toggleLensPanel(panel, button);
+  } catch {
+    panel.hidden = false;
+    panel.textContent = 'The demo could not open. Please refresh and try again.';
+    button.setAttribute('aria-expanded', 'true');
+  } finally { button.disabled = false; }
 });
 
-window.addEventListener("hashchange", () => renderRoute({ focus: true }));
+// Links remain ordinary anchors: opening a section in a new tab still works.
+document.addEventListener('click', event => {
+  const anchor = event.target.closest('a[href^="#"]');
+  if (!anchor || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  stopDemo();
+  if (anchor.hash === window.location.hash) {
+    event.preventDefault();
+    navigateToHash({ focus: true });
+  }
+});
+window.addEventListener('hashchange', () => navigateToHash({ focus: true }));
 
-fetch("content/site.json")
-  .then((response) => {
+fetch('content/site.json', { cache: 'no-cache' })
+  .then(response => {
     if (!response.ok) throw new Error(`Content request failed: ${response.status}`);
     return response.json();
   })
-  .then((data) => {
-    siteData = data;
-    document.querySelector(".monogram").textContent = data.meta.initials;
-    document.querySelector("#footer-year").textContent = data.meta.year;
-    document.querySelector("#footer-name").textContent = data.meta.ownerName;
+  .then(data => {
+    contentRoot.innerHTML = homeSection(data.home, data.socials || []) + workSection(data.work || { heading: 'Work', items: [] }) + projectsSection(data.projects) + aboutSection(data.about)
+      + (data.experience?.visible ? experienceSection(data.experience) : '')
+      + (data.research?.visible ? researchSection(data.research) : '');
+    document.title = data.meta.siteTitle;
     document.querySelector('meta[name="description"]').content = data.meta.description;
-    renderSocials(data.socials);
-    renderRoute();
+    document.querySelector('.monogram').textContent = data.meta.initials;
+    document.querySelector('.monogram').setAttribute('aria-label', `${data.meta.ownerName}, home`);
+    document.querySelector('#footer-year').textContent = data.meta.year;
+    document.querySelector('#footer-name').textContent = data.meta.ownerName;
+    document.querySelector('#contact-links').innerHTML = `<p class="contact-heading">${escapeHTML(data.contact.heading)}</p>${data.contact.intro ? `<p>${escapeHTML(data.contact.intro)}</p>` : ''}${(data.contact.items || []).map(item => linkMarkup(item.label, item.url, 'contact-link')).join('')}`;
+    if (window.location.hash) requestAnimationFrame(() => navigateToHash({ initial: true }));
+    // Release any camera session when visitors scroll away from the demo, too.
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) stopDemo();
+      });
+      observer.observe(document.getElementById('projects'));
+    }
   })
-  .catch((error) => {
+  .catch(error => {
     console.error(error);
-    contentRoot.innerHTML = `
-      <div class="error-state">
-        <p>The portfolio content could not be loaded. Please try refreshing the page.</p>
-      </div>
-    `;
+    contentRoot.innerHTML = '<p class="error-state">The portfolio could not load. Please refresh, or <a href="mailto:cherches@stanford.edu">get in touch by email</a>.</p>';
   });

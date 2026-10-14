@@ -40,7 +40,7 @@ content:
             required: true
 
       - name: home
-        label: Home page
+        label: Introduction & portrait
         type: object
         fields:
           - name: firstName
@@ -59,15 +59,9 @@ content:
             label: Introduction
             type: text
             required: true
-          - name: ctaLabel
-            label: Button label
-            type: string
-            required: true
-          - name: ctaTarget
-            label: Button link
-            type: string
-            required: true
-            description: Use a section link such as #about or a full URL.
+          - name: current
+            label: Current work paragraph
+            type: text
           - name: image
             label: Portrait
             type: image
@@ -79,8 +73,43 @@ content:
             label: Portrait description
             type: string
 
+      - name: work
+        label: Selected work
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+            required: true
+          - name: intro
+            label: Introduction (optional)
+            type: text
+          - name: items
+            label: Work items
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - name: title
+                label: Title
+                type: string
+                required: true
+              - name: context
+                label: Organization or context
+                type: string
+              - name: description
+                label: Description
+                type: text
+                required: true
+              - name: url
+                label: Link (optional)
+                type: string
+                description: Leave blank when there is no public link.
+
       - name: about
-        label: About page
+        label: About section
         type: object
         fields:
           - name: heading
@@ -92,26 +121,9 @@ content:
             type: text
             list: true
             required: true
-          - name: image
-            label: About image
-            type: image
-            description: Upload a JPG, JPEG, PNG, or WebP image.
-            options:
-              media: images
-              extensions: [jpg, jpeg, png, webp]
-          - name: imageAlt
-            label: Image description
-            type: string
-          - name: contactLabel
-            label: Contact link label
-            type: string
-          - name: contactUrl
-            label: Contact link
-            type: string
-            description: Use #contact to send visitors to the contact page.
 
       - name: projects
-        label: Projects page
+        label: Selected projects
         type: object
         fields:
           - name: heading
@@ -137,16 +149,6 @@ content:
                 label: Description
                 type: text
                 required: true
-              - name: meta
-                label: Technologies
-                type: string
-              - name: image
-                label: Thumbnail
-                type: image
-                description: Upload a JPG, JPEG, PNG, or WebP image.
-                options:
-                  media: images
-                  extensions: [jpg, jpeg, png, webp]
               - name: url
                 label: Project link
                 type: string
@@ -154,17 +156,15 @@ content:
                 label: Interactive demo
                 type: string
                 description: Use snapchat-lenses to show the live lens player.
-          - name: footerLabel
-            label: Footer link label
-            type: string
-          - name: footerUrl
-            label: Footer link
-            type: string
 
       - name: experience
-        label: Experience page
+        label: Optional experience section
         type: object
         fields:
+          - name: visible
+            label: Show this section on the website
+            type: boolean
+            default: false
           - name: heading
             label: Heading
             type: string
@@ -200,17 +200,15 @@ content:
                 description: Add the bullet points shown when a visitor opens this role.
                 type: text
                 list: true
-          - name: footerLabel
-            label: Footer link label
-            type: string
-          - name: footerUrl
-            label: Footer link
-            type: string
 
       - name: research
-        label: Research page
+        label: Optional research section
         type: object
         fields:
+          - name: visible
+            label: Show this section on the website
+            type: boolean
+            default: false
           - name: heading
             label: Heading
             type: string
@@ -244,7 +242,7 @@ content:
                 type: string
 
       - name: contact
-        label: Contact page
+        label: Contact footer
         type: object
         fields:
           - name: heading
@@ -277,7 +275,7 @@ content:
                 required: true
 
       - name: socials
-        label: Footer social links
+        label: Introduction social links
         type: object
         list:
           collapsible:
@@ -290,7 +288,7 @@ content:
             options:
               values: [email, linkedin, github, link]
           - name: label
-            label: Accessible label
+            label: Link label
             type: string
             required: true
           - name: url

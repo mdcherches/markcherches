@@ -9,7 +9,7 @@
   "home": {
     "firstName": "Mark",
     "lastName": "Cherches",
-    "eyebrow": "Stanford · Building & applied AI",
+    "eyebrow": "Stanford · Human-Centered Artificial Intelligence",
     "summary": "I'm a Stanford student interested in building useful products and understanding how people adopt new technology.",
     "ctaLabel": "Explore",
     "ctaTarget": "#about",
@@ -29,29 +29,20 @@
   },
   "projects": {
     "heading": "Selected projects",
-    "intro": "",
     "items": [
       {
         "title": "Vinyl Scrobbler",
-        "description": "An iOS app connecting vinyl listening with Last.fm.",
-        "meta": "Published iOS App · Music Tracking · Last.fm",
-        "image": "/assets/images/project-finance-placeholder.png",
-        "url": ""
+        "description": "An iOS app connecting vinyl listening with Last.fm."
       },
       {
         "title": "Snapchat Lenses",
         "description": "Interactive AR experiences, including Vine Trivia.",
-        "meta": "Lens Studio · Augmented Reality · Interactive Games",
-        "image": "/assets/images/project-lenses.svg",
         "url": "https://lens.snap.com/experience/a95642a2-f288-44cc-b35e-d5e01a8bac3d",
         "demo": "snapchat-lenses"
       },
       {
         "title": "Instagram Feed Planner",
-        "description": "A tool for arranging and planning an Instagram grid.",
-        "meta": "Open Source · Next.js · TypeScript · Local-first",
-        "image": "/assets/images/project-transportation-placeholder.png",
-        "url": ""
+        "description": "A tool for arranging and planning an Instagram grid."
       }
     ],
     "footerLabel": "View all on GitHub",
@@ -161,25 +152,21 @@
   ],
   "work": {
     "heading": "Selected work",
-    "intro": "",
     "items": [
       {
         "title": "Stealth startup",
         "context": "Building",
-        "description": "Technical work on an early-stage product.",
-        "url": ""
+        "description": "Technical work on an early-stage product."
       },
       {
         "title": "AI adoption in Mexico",
         "context": "PIT Policy Lab",
-        "description": "Research into the barriers between AI capabilities and organizational adoption.",
-        "url": ""
+        "description": "Research into the barriers between AI capabilities and organizational adoption."
       },
       {
         "title": "Applied AI in healthcare",
         "context": "Research",
-        "description": "Exploring how machine learning can support real-world health applications.",
-        "url": ""
+        "description": "Exploring how machine learning can support real-world health applications."
       }
     ]
   }

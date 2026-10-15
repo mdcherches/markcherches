@@ -10,12 +10,12 @@
     "firstName": "Mark",
     "lastName": "Cherches",
     "eyebrow": "Human-Centered Artificial Intelligence @ Stanford",
-    "summary": "I'm a Stanford student interested in building useful products and understanding how people adopt new technology.",
+    "summary": "I’m a Stanford student focused on how AI is built, used, and adopted. I’m drawn to work that combines technical development with product decisions and an understanding of people.",
     "ctaLabel": "Explore",
-    "ctaTarget": "#about",
+    "ctaTarget": "#experience",
     "image": "/assets/images/markheadshotnew.png",
     "imageAlt": "Portrait of Mark Cherches at Stanford",
-    "current": "I'm currently building as an Applied AI Engineer for a stealth startup out of the Stanford School of Medicine. My work also spans applied AI in healthcare and research on AI adoption in Mexico."
+    "current": "Currently, I’m an Applied AI Engineer at a stealth startup emerging from Stanford’s School of Medicine. Previously, I researched AI adoption across healthcare, finance, and manufacturing."
   },
   "about": {
     "heading": "A little more",
@@ -51,7 +51,7 @@
   },
   "experience": {
     "heading": "Experience",
-    "intro": "Where I’ve worked and learned.",
+    "intro": "",
     "items": [
       {
         "period": "August 2026 — Present",
@@ -155,11 +155,6 @@
       "icon": "linkedin",
       "label": "LinkedIn",
       "url": "https://www.linkedin.com/in/mark-cherches/"
-    },
-    {
-      "icon": "github",
-      "label": "GitHub",
-      "url": "https://github.com/mdcherches"
     }
   ],
   "work": {

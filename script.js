@@ -166,7 +166,6 @@ fetch('content/site.json?v=20261014-blocks', { cache: 'no-cache' })
       + (data.experience?.visible !== false ? experienceSection(data.experience) : '')
       + (data.work?.visible ? workSection(data.work) : '')
       + (data.projects?.visible ? projectsSection(data.projects) : '')
-      + aboutSection(data.about)
       + (data.research?.visible ? researchSection(data.research) : '');
     setupScrollReveal();
     document.title = data.meta.siteTitle;
